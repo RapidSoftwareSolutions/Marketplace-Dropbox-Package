@@ -34,7 +34,7 @@ $app->post('/api/Dropbox/downloadDocAsHTML', function ($request, $response, $arg
         ->then(
             function (\Psr\Http\Message\ResponseInterface $response) use ($client, $post_data, $settings, &$result) {
                 $responseApi = $response->getBody()->getContents();
-         $size = strlen($responseApi);
+                $size = strlen($responseApi);
                 if (in_array($response->getStatusCode(), ['200', '201', '202', '203', '204'])) {
                     try {
                         $fileUrl = $client->post($settings['uploadServiceUrl'], [
@@ -78,8 +78,6 @@ $app->post('/api/Dropbox/downloadDocAsHTML', function ($request, $response, $arg
             }
         )
         ->wait();
-
-
 
 
     return $response->withHeader('Content-type', 'application/json')->withJson($result, 200, JSON_UNESCAPED_SLASHES);

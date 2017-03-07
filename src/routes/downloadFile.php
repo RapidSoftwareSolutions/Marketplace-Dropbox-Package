@@ -31,7 +31,9 @@ $app->post('/api/Dropbox/downloadFile', function ($request, $response, $args) {
         ->then(
             function (\Psr\Http\Message\ResponseInterface $response) use ($client, $post_data, $settings, &$result) {
                 $responseApi = $response->getBody()->getContents();
-               $extension = pathinfo($post_data['args']['filePath'])['extension'];
+               $fileExtension = pathinfo($post_data['args']['filePath'])['extension'];
+               $fileName = pathinfo($post_data['args']['filePath'])['filename'];
+
 
                 $size = strlen($responseApi);
                 if (in_array($response->getStatusCode(), ['200', '201', '202', '203', '204'])) {
@@ -44,7 +46,7 @@ $app->post('/api/Dropbox/downloadFile', function ($request, $response, $args) {
                                 ],
                                 [
                                     'name' => 'file',
-                                    'filename' => bin2hex(random_bytes(5)) . '.'.$extension,
+                                    'filename' => $fileName . '.'.$fileExtension,
                                     'contents' => $responseApi
                                 ],
                             ]
