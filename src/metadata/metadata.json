@@ -1559,7 +1559,7 @@
         {
           "name": "membersList",
           "type": "Array",
-          "info": "Users which should be added to the Paper doc. Specify only email or Dropbox account id. Example: [{\".tag\": \"email\",\"email\": \"justin@example.com\"}]",
+          "info": "Users which should be added to the Paper doc. Specify only email or Dropbox account id. Example: [{\"member\" :{\".tag\": \"email\",\"email\": \"justin@example.com\"}}]",
           "required": true
         },
         {
