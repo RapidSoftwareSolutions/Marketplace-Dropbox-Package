@@ -665,7 +665,7 @@
           "required": true
         },
         {
-          "name": "path",
+          "name": "folderPath",
           "type": "String",
           "info": "Path of the file or a folder",
           "required": true
