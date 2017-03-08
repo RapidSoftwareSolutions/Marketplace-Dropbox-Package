@@ -25,6 +25,7 @@ $app->post('/api/Dropbox/getSharedLinkFile', function ($request, $response, $arg
     //requesting remote API
     $client = new GuzzleHttp\Client();
     $result = [];
+
     $client->postAsync($query_str,
         [
 
@@ -38,7 +39,8 @@ $app->post('/api/Dropbox/getSharedLinkFile', function ($request, $response, $arg
         ->then(
             function (\Psr\Http\Message\ResponseInterface $response) use ($client, $post_data, $settings, &$result) {
                 $responseApi = $response->getBody()->getContents();
-                $extension = '.bin';
+
+                $fileName = json_decode($response->getHeaders()['dropbox-api-result'][0], true)['name'];
 
                 $size = strlen($responseApi);
                 if (in_array($response->getStatusCode(), ['200', '201', '202', '203', '204'])) {
@@ -51,7 +53,7 @@ $app->post('/api/Dropbox/getSharedLinkFile', function ($request, $response, $arg
                                 ],
                                 [
                                     'name' => 'file',
-                                    'filename' => bin2hex(random_bytes(5)) . '.'.$extension,
+                                    'filename' => $fileName,
                                     'contents' => $responseApi
                                 ],
                             ]
@@ -84,8 +86,6 @@ $app->post('/api/Dropbox/getSharedLinkFile', function ($request, $response, $arg
             }
         )
         ->wait();
-
-
 
 
     return $response->withHeader('Content-type', 'application/json')->withJson($result, 200, JSON_UNESCAPED_SLASHES);
