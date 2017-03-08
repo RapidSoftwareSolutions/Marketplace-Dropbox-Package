@@ -189,7 +189,7 @@ Starts returning the contents of a folder.
 | Field                          | Type   | Description
 |--------------------------------|--------|----------
 | accessToken                    | String | Access token
-| path                           | String | Path of the file or a folder
+| folderP                        | String | Path of the file or a folder
 | recursive                      | Boolean| If true, the list folder operation will be applied recursively to all subfolders and the response will contain contents of all subfolders. The default for this field is False.
 | includeMediaInfo               | Boolean| If true, FileMetadata.media_info is set for photo and video. The default for this field is False.
 | includeDeleted                 | Boolean|  If true, DeletedMetadata will be returned for deleted file or folder, otherwise LookupError.not_found will be returned. The default for this field is False.
