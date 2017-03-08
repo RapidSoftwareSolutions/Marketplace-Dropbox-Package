@@ -456,7 +456,7 @@ Adds specified members to a folder.
 | Field        | Type   | Description
 |--------------|--------|----------
 | accessToken  | String | Access token
-| fileId       | String | Id of the file
+| folderId     | String | Id of the folder
 | membersList  | Array  | Users which should be added to the Paper doc. Specify only email or Dropbox account id. Example: [{".tag": "email","email": "justin@example.com"}]
 | customMessage| String | A personal message that will be emailed to each successfully added member.
 | quiet        | Boolean| Clients should set this to true if no email shall be sent to added users. The default for this field is False.

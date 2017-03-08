@@ -1551,9 +1551,9 @@
           "required": true
         },
         {
-          "name": "fileId",
+          "name": "folderId",
           "type": "String",
-          "info": "Id of the file",
+          "info": "Id of the folder",
           "required": true
         },
         {

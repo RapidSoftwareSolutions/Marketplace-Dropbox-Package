@@ -31,7 +31,7 @@ $app->post('/api/Dropbox/getFilePreview', function ($request, $response, $args) 
         ->then(
             function (\Psr\Http\Message\ResponseInterface $response) use ($client, $post_data, $settings, &$result) {
                 $responseApi = $response->getBody()->getContents();
-              
+
                 $fileName = pathinfo($post_data['args']['filePath'])['filename'];
 
 
