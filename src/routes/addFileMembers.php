@@ -30,6 +30,7 @@ $app->post('/api/Dropbox/addFileMembers', function ($request, $response, $args) 
     if (isset($post_data['args']['addMessageAsComment']) && strlen($post_data['args']['addMessageAsComment']) > 0) {
         $body['add_message_as_comment'] = $post_data['args']['addMessageAsComment'];
     }
+
     try {
 
         $resp = $client->request('POST', $query_str, [

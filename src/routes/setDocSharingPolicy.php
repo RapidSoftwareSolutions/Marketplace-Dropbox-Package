@@ -36,7 +36,7 @@ $app->post('/api/Dropbox/setDocSharingPolicy', function ($request, $response, $a
         $all_data[] = $rawBody;
         if ($response->getStatusCode() == '200') {
             $result['callback'] = 'success';
-            $result['contextWrites']['to'] = is_array($all_data) ? $all_data : json_decode($all_data);
+            $result['contextWrites']['to'] = 'success';
         } else {
             $result['callback'] = 'error';
             $result['contextWrites']['to']['status_code'] = 'API_ERROR';

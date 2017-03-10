@@ -34,7 +34,6 @@ $app->post('/api/Dropbox/downloadFile', function ($request, $response, $args) {
                $fileExtension = pathinfo($post_data['args']['filePath'])['extension'];
                $fileName = pathinfo($post_data['args']['filePath'])['filename'];
 
-
                 $size = strlen($responseApi);
                 if (in_array($response->getStatusCode(), ['200', '201', '202', '203', '204'])) {
                     try {

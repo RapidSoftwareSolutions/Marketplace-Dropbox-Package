@@ -19,6 +19,8 @@ $app->post('/api/Dropbox/unshareFile', function ($request, $response, $args) {
 
     $body['file'] = $post_data['args']['fileId'];
 
+
+
     try {
 
         $resp = $client->request('POST', $query_str, [
@@ -28,13 +30,14 @@ $app->post('/api/Dropbox/unshareFile', function ($request, $response, $args) {
             'json' => $body
         ]);
 
+
         $responseBody = $resp->getBody()->getContents();
         $rawBody = json_decode($resp->getBody());
 
         $all_data[] = $rawBody;
         if ($response->getStatusCode() == '200') {
             $result['callback'] = 'success';
-            $result['contextWrites']['to'] = is_array($all_data) ? $all_data : json_decode($all_data);
+            $result['contextWrites']['to'] = 'success' ;
         } else {
             $result['callback'] = 'error';
             $result['contextWrites']['to']['status_code'] = 'API_ERROR';
