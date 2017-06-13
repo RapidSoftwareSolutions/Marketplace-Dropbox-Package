@@ -26,7 +26,8 @@ $app->post('/api/Dropbox/uploadSingleFile', function ($request, $response, $args
         $body['autorename'] = $post_data['args']['autoRename'];
     }
     if (isset($post_data['args']['clientModified']) && strlen($post_data['args']['clientModified']) > 0){
-        $body['client_modified'] = $post_data['args']['clientModified'];
+        $dateTime = new DateTime($post_data['args']['clientModified']);
+        $body['client_modified'] = $dateTime->format('T-m-d\TH:i:s\Z');
     }
     if (isset($post_data['args']['mute']) && strlen($post_data['args']['mute']) > 0){
         $body['mute'] = $post_data['args']['mute'];

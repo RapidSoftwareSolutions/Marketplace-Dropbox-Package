@@ -2,7 +2,7 @@
 
 # Dropbox Package
 Dropbox
-* Domain: dropbox.com
+* Domain: [Dropbox](http://dropbox.com)
 * Credentials: apiKey, apiSecret
 
 ## How to get credentials: 
@@ -11,6 +11,16 @@ Dropbox
 2. [Register an app](https://www.dropbox.com/developers)
 3. After creation your app you will see api Secret and api Key
 
+
+## Custom datatypes: 
+ |Datatype|Description|Example
+ |--------|-----------|----------
+ |Datepicker|String which includes date and time|```2016-05-28 00:00:00```
+ |Map|String which includes latitude and longitude coma separated|```50.37, 26.56```
+ |List|Simple array|```["123", "sample"]``` 
+ |Select|String with predefined values|```sample```
+ |Array|Array of objects|```[{"Second name":"123","Age":"12","Photo":"sdf","Draft":"sdfsdf"},{"name":"adi","Second name":"bla","Age":"4","Photo":"asfserwe","Draft":"sdfsdf"}] ```
+ 
 
 ## Dropbox.getAccessToken
 Generates user access token
@@ -50,7 +60,7 @@ Get information about a users' accounts.
 | Field      | Type  | Description
 |------------|-------|----------
 | accessToken| String| Access token
-| userIds    | Array | IDs of the users
+| userIds    | List  | IDs of the users
 
 ## Dropbox.getMySpaceUsage
 Get the space usage information for the current user's account.
@@ -76,7 +86,7 @@ Copy multiple files or folders to different locations at once in the user's Drop
 | Field            | Type   | Description
 |------------------|--------|----------
 | accessToken      | String | Access token
-| entries          | Array  | List of entries to be copied. Example: [{"from_path":"/123/sample.json", "to_path": "/321/sample.json"}]
+| entries          | List   | List of entries to be copied. Example: [{"from_path":"/123/sample.json", "to_path": "/321/sample.json"}]
 | allowSharedFolder| Boolean| If true, copy will copy contents in shared folder, otherwise RelocationError.cant_copy_shared_folder will be returned if from_path contains shared folder. This field is always true for move. The default for this field is False.
 | autoRename       | Boolean| If there's a conflict, have the Dropbox server try to autorename the file to avoid the conflict. The default for this field is False.
 
@@ -128,7 +138,7 @@ Delete multiple files/folders at once.
 | Field        | Type  | Description
 |--------------|-------|----------
 | accessToken  | String| Access token
-| deleteEntries| Array | list of entries to delete. Exmaple: [{"path":"/125"}, {"path":"/126"}]
+| deleteEntries| List  | list of entries to delete. Exmaple: [{"path":"/125"}, {"path":"/126"}]
 
 ## Dropbox.getDeleteStatus
 Returns the status of an asynchronous job for deleteBatch. If success, it returns list of results for each entry.
@@ -180,7 +190,7 @@ This method currently supports files with the following file extensions: jpg, jp
 |------------|-------|----------
 | accessToken| String| Access token
 | imagePath  | String| Path of the image
-| format     | String| The format for the thumbnail image, jpeg (default) or png. For images that are photos, jpeg should be preferred, while png is better for screenshots and digital arts. The default for this union is jpeg.
+| format     | Select| The format for the thumbnail image, jpeg (default) or png. For images that are photos, jpeg should be preferred, while png is better for screenshots and digital arts. The default for this union is jpeg.
 | size       | String| The size for the thumbnail image. The default for this union is w64h64.
 
 ## Dropbox.getFolderContents
@@ -189,7 +199,7 @@ Starts returning the contents of a folder.
 | Field                          | Type   | Description
 |--------------------------------|--------|----------
 | accessToken                    | String | Access token
-| folderP                        | String | Path of the file or a folder
+| folderPath                     | String | Path of the file or a folder
 | recursive                      | Boolean| If true, the list folder operation will be applied recursively to all subfolders and the response will contain contents of all subfolders. The default for this field is False.
 | includeMediaInfo               | Boolean| If true, FileMetadata.media_info is set for photo and video. The default for this field is False.
 | includeDeleted                 | Boolean|  If true, DeletedMetadata will be returned for deleted file or folder, otherwise LookupError.not_found will be returned. The default for this field is False.
@@ -240,7 +250,7 @@ Move multiple files or folders to different locations at once in the user's Drop
 | Field      | Type   | Description
 |------------|--------|----------
 | accessToken| String | Access token
-| entries    | Array  | List of entries to be moved. Example: [{"from_path":"/123/sample.json", "to_path": "/321/sample.json"}]
+| entries    | List   | List of entries to be moved. Example: [{"from_path":"/123/sample.json", "to_path": "/321/sample.json"}]
 | autoRename | Boolean| If there's a conflict, have the Dropbox server try to autorename the file to avoid the conflict. The default for this field is False.
 
 ## Dropbox.getMoveStatus
@@ -287,20 +297,20 @@ Searches for files and folders.
 | searchQuery| String| The string to search for. The search string is split on spaces into multiple tokens. For file name searching, the last token is used for prefix matching (i.e. "bat c" matches "bat cave" but not "batman car").
 | startFrom  | Number| The starting index within the search results (used for paging). The default for this field is 0.
 | maxResults | Number| The maximum number of search results to return. The default for this field is 100.
-| searchMode | String| The search mode (filename, filename_and_content, or deleted_filename). Note that searching file content is only available for Dropbox Business accounts. The default for this union is filename.
+| searchMode | Select| The search mode (filename, filename_and_content, or deleted_filename). Note that searching file content is only available for Dropbox Business accounts. The default for this union is filename.
 
 ## Dropbox.uploadSingleFile
 Create a new file with the contents provided in the request.
 
-| Field         | Type   | Description
-|---------------|--------|----------
-| accessToken   | String | Access token
-| filePath      | String | Path in the user's Dropbox to save the file.
-| file          | File   | The file to upload
-| uploadMode    | String | Selects what to do if the file already exists. The default for this union is add.
-| autoRename    | Boolean| If there's a conflict, as determined by mode, have the Dropbox server try to autorename the file to avoid conflict. The default for this field is False.
-| clientModified| String | Timestamp(format="%Y-%m-%dT%H:%M:%SZ") The value to store as the client_modified timestamp. 
-| mute          | Boolean| Normally, users are made aware of any file modifications in their Dropbox account via notifications in the client software. If true, this tells the clients that this modification shouldn't result in a user notification. The default for this field is False.
+| Field         | Type      | Description
+|---------------|-----------|----------
+| accessToken   | String    | Access token
+| filePath      | String    | Path in the user's Dropbox to save the file.
+| file          | File      | The file to upload
+| uploadMode    | String    | Selects what to do if the file already exists. The default for this union is add.
+| autoRename    | Boolean   | If there's a conflict, as determined by mode, have the Dropbox server try to autorename the file to avoid conflict. The default for this field is False.
+| clientModified| DatePicker| Timestamp(format="%Y-%m-%dT%H:%M:%SZ") The value to store as the client_modified timestamp. 
+| mute          | Boolean   | Normally, users are made aware of any file modifications in their Dropbox account via notifications in the client software. If true, this tells the clients that this modification shouldn't result in a user notification. The default for this field is False.
 
 ## Dropbox.marksDocAsDeleted
 Marks the given Paper doc as deleted. This operation is non-destructive and the doc can be revived by the owner.
@@ -316,9 +326,9 @@ Return the list of all Paper docs according to the argument specifications.
 | Field      | Type  | Description
 |------------|-------|----------
 | accessToken| String| Access token
-| filterBy   | String| Allows user to specify how the Paper docs should be filtered. Possible values: docs_accessed(default), docs_created
-| sortBy     | String| Allows user to specify how the Paper docs should be sorted. Possible values: accessed(default), modified, created
-| sortOrder  | String| Allows user to specify the sort order of the result. Possible values: ascending(default), descending
+| filterBy   | Select| Allows user to specify how the Paper docs should be filtered. Possible values: docs_accessed(default), docs_created
+| sortBy     | Select| Allows user to specify how the Paper docs should be sorted. Possible values: accessed(default), modified, created
+| sortOrder  | Select| Allows user to specify the sort order of the result. Possible values: ascending(default), descending
 | limit      | Number| Size limit per batch. The maximum number of docs that can be retrieved per batch is 1000. Higher value results in invalid arguments error. The default for this field is 1000.
 
 ## Dropbox.downloadDocAsHTML
@@ -386,8 +396,8 @@ Sets the default sharing policy for the given Paper doc.
 |--------------------|-------|----------
 | accessToken        | String| Access token
 | documentId         | String| Id of the document
-| publicSharingPolicy| String| This value applies to the non-team members. Possible values: people_with_link_can_edit, people_with_link_can_view_and_comment, invite_only, disabled
-| teamSharingPolicy  | String| This value applies to the team members. Possible values: people_with_link_can_edit, people_with_link_can_view_and_comment, invite_only
+| publicSharingPolicy| Select| This value applies to the non-team members. Possible values: people_with_link_can_edit, people_with_link_can_view_and_comment, invite_only, disabled
+| teamSharingPolicy  | Select| This value applies to the team members. Possible values: people_with_link_can_edit, people_with_link_can_view_and_comment, invite_only
 
 ## Dropbox.addUsersToDoc
 Allows an owner or editor to add users to a Paper doc or change their permissions using their email or Dropbox account id.
@@ -396,7 +406,7 @@ Allows an owner or editor to add users to a Paper doc or change their permission
 |--------------|--------|----------
 | accessToken  | String | Access token
 | documentId   | String | Id of the document
-| membersList  | Array  | Users which should be added to the Paper doc. Specify only email or Dropbox account id. Example: [{"member": {".tag": "email","email": "justin@example.com"},"permission_level":{".tag":"view_and_comment"}}]
+| membersList  | List   | Users which should be added to the Paper doc. Specify only email or Dropbox account id. Example: [{"member": {".tag": "email","email": "justin@example.com"},"permission_level":{".tag":"view_and_comment"}}]
 | customMessage| String | A personal message that will be emailed to each successfully added member.
 | quiet        | Boolean| Clients should set this to true if no email shall be sent to added users. The default for this field is False.
 
@@ -408,7 +418,7 @@ Lists all users who visited the Paper doc or users with explicit access. This ca
 | accessToken| String| Access token
 | documentId | String| Id of the document
 | limit      | Number| Size limit per batch. The maximum number of users that can be retrieved per batch is 1000. Higher value results in invalid arguments error. The default for this field is 1000.
-| filterBy   | String|  Specify this attribute if you want to obtain users that have already accessed the Paper doc. Possible values: shared(default), visited
+| filterBy   | Select|  Specify this attribute if you want to obtain users that have already accessed the Paper doc. Possible values: shared(default), visited
 
 ## Dropbox.paginateVisitedUsersDoc
 Once a cursor has been retrieved from getVisitedDocUsers, use this to paginate through all users on the Paper doc.
@@ -444,11 +454,11 @@ Adds specified members to a file.
 |--------------------|--------|----------
 | accessToken        | String | Access token
 | fileId             | String | Id of the file
-| membersList        | Array  | Users which should be added to the Paper doc. Specify only email or Dropbox account id. Example: [{".tag": "email","email": "justin@example.com"}]
+| membersList        | List   | Users which should be added to the Paper doc. Specify only email or Dropbox account id. Example: [{".tag": "email","email": "justin@example.com"}]
 | customMessage      | String | A personal message that will be emailed to each successfully added member.
 | quiet              | Boolean| Clients should set this to true if no email shall be sent to added users. The default for this field is False.
 | addMessageAsComment| Boolean| If the custom message should be added as a comment on the file. The default for this field is False.
-| accessLevel        | String | AccessLevel union object, describing what access level we want to give new members. Possible values: viewer(default), owner, editor, viewer_no_comment.
+| accessLevel        | Select | AccessLevel union object, describing what access level we want to give new members. Possible values: viewer(default), owner, editor, viewer_no_comment.
 
 ## Dropbox.addFolderMembers
 Adds specified members to a folder.
@@ -457,7 +467,7 @@ Adds specified members to a folder.
 |--------------|--------|----------
 | accessToken  | String | Access token
 | folderId     | String | Id of the folder
-| membersList  | Array  | Users which should be added to the Paper doc. Specify only email or Dropbox account id. Example: [{"member" :{".tag": "email","email": "justin@example.com"}}]
+| membersList  | List   | Users which should be added to the Paper doc. Specify only email or Dropbox account id. Example: [{"member" :{".tag": "email","email": "justin@example.com"}}]
 | customMessage| String | A personal message that will be emailed to each successfully added member.
 | quiet        | Boolean| Clients should set this to true if no email shall be sent to added users. The default for this field is False.
 
@@ -485,7 +495,7 @@ Create a shared link with custom settings.
 |--------------------|-------|----------
 | accessToken        | String| Access token
 | linkPath           | String| The path to be shared by the shared link
-| requestedVisibility| String| The requested access for this shared link. Possible values: public, team_only
+| requestedVisibility| Select| The requested access for this shared link. Possible values: public, team_only
 
 ## Dropbox.getSharedFileMetadata
 Returns shared file metadata.
@@ -494,7 +504,7 @@ Returns shared file metadata.
 |------------|-------|----------
 | accessToken| String| Access token
 | fileId     | String|  The file to query.
-| options    | Array | A list of `FileAction`s corresponding to `FilePermission`s that should appear in the response's SharedFileMetadata.permissions field describing the actions the authenticated user can perform on the file.
+| options    | List  | A list of `FileAction`s corresponding to `FilePermission`s that should appear in the response's SharedFileMetadata.permissions field describing the actions the authenticated user can perform on the file.
 
 ## Dropbox.getSharedFileMetadataBatch
 Returns shared file metadata.
@@ -502,8 +512,8 @@ Returns shared file metadata.
 | Field      | Type  | Description
 |------------|-------|----------
 | accessToken| String| Access token
-| fileIds    | Array |  Files to query.
-| options    | Array | A list of `FileAction`s corresponding to `FilePermission`s that should appear in the response's SharedFileMetadata.permissions field describing the actions the authenticated user can perform on the file.
+| fileIds    | List  | Files to query.
+| options    | List  | A list of `FileAction`s corresponding to `FilePermission`s that should appear in the response's SharedFileMetadata.permissions field describing the actions the authenticated user can perform on the file.
 
 ## Dropbox.getSingleFolderMetadata
 Returns shared folder metadata by its folder ID.
@@ -512,7 +522,7 @@ Returns shared folder metadata by its folder ID.
 |------------|-------|----------
 | accessToken| String| Access token
 | folderId   | String| The ID for the shared folder.
-| options    | Array |  A list of `FolderAction`s corresponding to `FolderPermission`s that should appear in the response's SharedFolderMetadata.permissions field describing the actions the authenticated user can perform on the folder.
+| options    | List  |  A list of `FolderAction`s corresponding to `FolderPermission`s that should appear in the response's SharedFolderMetadata.permissions field describing the actions the authenticated user can perform on the folder.
 
 ## Dropbox.getSharedLinkFile
 Download the shared link's file from a user's Dropbox.
@@ -542,7 +552,7 @@ Use to obtain the members who have been invited to a file, both inherited and un
 | accessToken     | String | Access token
 | fileId          | String | The file for which you want to see members.
 | limit           | Number | Number of members to return max per query. Defaults to 100 if no limit is specified. The default for this field is 100.
-| actions         | Array  | The actions for which to return permissions on a member.
+| actions         | List   | The actions for which to return permissions on a member.
 | includeInherited| Boolean| Whether to include members who only have access from a parent shared folder. The default for this field is True.
 
 ## Dropbox.getFilesInvitedUsers
@@ -551,7 +561,7 @@ Get members of multiple files at once. The arguments to this route are more limi
 | Field      | Type  | Description
 |------------|-------|----------
 | accessToken| String| Access token
-| fileIds    | Array | Files for which you want to see members.
+| fileIds    | List  | Files for which you want to see members.
 | limit      | Number| Number of members to return max per query. Defaults to 10 if no limit is specified.
 
 ## Dropbox.paginateFileInvitedUsers
@@ -570,7 +580,7 @@ Returns shared folder membership by its folder ID.
 | accessToken| String| Access token
 | folderId   | String| The folder for which you want to see members.
 | limit      | Number| Number of members to return max per query. The default for this field is 1000.
-| actions    | Array | The actions for which to return permissions on a member.
+| actions    | List  | The actions for which to return permissions on a member.
 
 ## Dropbox.paginateSharedFolderMembers
 Once a cursor has been retrieved from getSharedFolderMembers, use this to paginate through all shared folder members.
@@ -595,7 +605,7 @@ Return the list of all shared folders the current user can mount or unmount.
 |------------|-------|----------
 | accessToken| String| Access token
 | limit      | Number| Number of members to return max per query. The default for this field is 1000.
-| actions    | Array | A list of `FolderAction`s corresponding to `FolderPermission`s that should appear in the response's SharedFolderMetadata.permissions field describing the actions the authenticated user can perform on the folder.
+| actions    | List  | A list of `FolderAction`s corresponding to `FolderPermission`s that should appear in the response's SharedFolderMetadata.permissions field describing the actions the authenticated user can perform on the folder.
 
 ## Dropbox.paginateUserMountableFolders
 Once a cursor has been retrieved from getUserMountableFolders, use this to paginate through all mountable folders.
@@ -612,7 +622,7 @@ Returns a list of all files shared with current user.
 |------------|-------|----------
 | accessToken| String| Access token
 | limit      | Number| Number of members to return max per query. The default for this field is 100.
-| actions    | Array | A list of `FileAction`s corresponding to `FilePermission`s that should appear in the response's SharedFileMetadata.permissions field describing the actions the authenticated user can perform on the file.
+| actions    | List  | A list of `FileAction`s corresponding to `FilePermission`s that should appear in the response's SharedFileMetadata.permissions field describing the actions the authenticated user can perform on the file.
 
 ## Dropbox.paginateUserSharedFiles
 Get more results with a cursor from getUserSharedFiles
@@ -629,7 +639,7 @@ Create a shared link with custom settings.
 |--------------------|-------|----------
 | accessToken        | String| Access token
 | linkUrl            | String| URL of the shared link to change its settings
-| requestedVisibility| String| The requested access for this shared link. Possible values: public, team_only
+| requestedVisibility| Select| The requested access for this shared link. Possible values: public, team_only
 
 ## Dropbox.relinquishFileMembership
 The current user relinquishes their membership in the designated file. Note that the current user may still have inherited access to this file through the parent folder.
@@ -655,16 +665,16 @@ Share a folder with collaborators.
 |-----------------|--------|----------
 | accessToken     | String | Access token
 | folderPath      | String | The path to the folder to share. If it does not exist, then a new one is created.
-| memberPolicy    | String | Who can be a member of this shared folder. Only applicable if the current user is on a team. Possible values: team, anyone
-| aclUpdatePolicy | String | Who can add and remove members of this shared folder.  Possible values: owner, editors
-| sharedLinkPolicy| String | The policy to apply to shared links created for content inside this shared folder. The current user must be on a team to set this policy to SharedLinkPolicy.members. Possible values: anyone, team, members
+| memberPolicy    | Select | Who can be a member of this shared folder. Only applicable if the current user is on a team. Possible values: team, anyone
+| aclUpdatePolicy | Select | Who can add and remove members of this shared folder.  Possible values: owner, editors
+| sharedLinkPolicy| Select | The policy to apply to shared links created for content inside this shared folder. The current user must be on a team to set this policy to SharedLinkPolicy.members. Possible values: anyone, team, members
 | forceAsync      | Boolean| Whether to force the share to happen asynchronously. The default for this field is False.
-| actions         | Array  | A list of `FolderAction`s corresponding to `FolderPermission`s that should appear in the response's SharedFolderMetadata.permissions field describing the actions the authenticated user can perform on the folder.
-| accessLevel     | String | The access level on the link for this file. Currently, it only accepts 'viewer' and 'viewer_no_comment'.
-| linkAudience    | String | The type of audience on the link for this file. Possible values: public, team, members
+| actions         | List   | A list of `FolderAction`s corresponding to `FolderPermission`s that should appear in the response's SharedFolderMetadata.permissions field describing the actions the authenticated user can perform on the folder.
+| accessLevel     | Select | The access level on the link for this file. Currently, it only accepts 'viewer' and 'viewer_no_comment'.
+| linkAudience    | Select | The type of audience on the link for this file. Possible values: public, team, members
 | linkExpiry      | JSON   | An expiry timestamp to set on a link. Possible values: remove_expiry, set_expiry Timestamp(format="%Y-%m-%dT%H:%M:%SZ") Set a new expiry or change an existing expiry.
-| linkPassword    | JSON   | The password for the link. Possible values: remove_password, set_password
-| viewerInfoPolicy| String | Who can enable/disable viewer info for this shared folder.Possible values: enabled, disabled
+| linkPassword    | Select | The password for the link. Possible values: remove_password, set_password
+| viewerInfoPolicy| Select | Who can enable/disable viewer info for this shared folder.Possible values: enabled, disabled
 
 ## Dropbox.checkShareJobStatus
 Returns the status of an asynchronous job for sharing a folder.
@@ -759,7 +769,7 @@ Changes a member's access on a shared file.
 | accessToken| String| Access token
 | fileId     | String| Id of the file
 | memberId   | String| Dropbox ID of the user
-| accessLevel| String| Defines the access levels for collaborators. Currently only available: viewer
+| accessLevel| Select| Defines the access levels for collaborators. Currently only available: viewer
 
 ## Dropbox.updateFolderMemberAccess
 Changes a member's access on a shared folder.
@@ -769,7 +779,7 @@ Changes a member's access on a shared folder.
 | accessToken| String| Access token
 | folderId   | String| Id of the folder
 | member     | JSON  | Member to remove from this file. Note that even if an email is specified, it may result in the removal of a user (not an invitee) if the user's main account corresponds to that email address. Example: {".tag": "email","email": "justin@example.com"}
-| accessLevel| String| Defines the access levels for collaborators. Currently only available: viewer, editor
+| accessLevel| Select| Defines the access levels for collaborators. Currently only available: viewer, editor
 
 ## Dropbox.updateFolderPolicy
 Update the sharing policies for a shared folder.
@@ -778,14 +788,14 @@ Update the sharing policies for a shared folder.
 |-----------------|--------|----------
 | accessToken     | String | Access token
 | folderId        | String | The ID of the folder
-| memberPolicy    | String | Who can be a member of this shared folder. Only applicable if the current user is on a team. Possible values: team, anyone
-| aclUpdatePolicy | String | Who can add and remove members of this shared folder.  Possible values: owner, editors
-| sharedLinkPolicy| String | The policy to apply to shared links created for content inside this shared folder. The current user must be on a team to set this policy to SharedLinkPolicy.members. Possible values: anyone, team, members
+| memberPolicy    | Select | Who can be a member of this shared folder. Only applicable if the current user is on a team. Possible values: team, anyone
+| aclUpdatePolicy | Select | Who can add and remove members of this shared folder.  Possible values: owner, editors
+| sharedLinkPolicy| Select | The policy to apply to shared links created for content inside this shared folder. The current user must be on a team to set this policy to SharedLinkPolicy.members. Possible values: anyone, team, members
 | forceAsync      | Boolean| Whether to force the share to happen asynchronously. The default for this field is False.
-| actions         | Array  | A list of `FolderAction`s corresponding to `FolderPermission`s that should appear in the response's SharedFolderMetadata.permissions field describing the actions the authenticated user can perform on the folder.
-| accessLevel     | String | The access level on the link for this file. Currently, it only accepts 'viewer' and 'viewer_no_comment'.
-| linkAudience    | String | The type of audience on the link for this file. Possible values: public, team, members
+| actions         | List   | A list of `FolderAction`s corresponding to `FolderPermission`s that should appear in the response's SharedFolderMetadata.permissions field describing the actions the authenticated user can perform on the folder.
+| accessLevel     | Select | The access level on the link for this file. Currently, it only accepts 'viewer' and 'viewer_no_comment'.
+| linkAudience    | Select | The type of audience on the link for this file. Possible values: public, team, members
 | linkExpiry      | JSON   | An expiry timestamp to set on a link. Possible values: remove_expiry, set_expiry Timestamp(format="%Y-%m-%dT%H:%M:%SZ") Set a new expiry or change an existing expiry.
-| linkPassword    | JSON   | The password for the link. Possible values: remove_password, set_password
-| viewerInfoPolicy| String | Who can enable/disable viewer info for this shared folder.Possible values: enabled, disabled
+| linkPassword    | Select | The password for the link. Possible values: remove_password, set_password
+| viewerInfoPolicy| Select | Who can enable/disable viewer info for this shared folder.Possible values: enabled, disabled
 

@@ -18,7 +18,7 @@ $app->post('/api/Dropbox/getSingleFolderMetadata', function ($request, $response
     $client = new GuzzleHttp\Client();
 
     $body['shared_folder_id'] = $post_data['args']['folderId'];
-    if (isset($post_data['args']['actions']) && strlen($post_data['args']['actions']) > 0) {
+    if (isset($post_data['args']['actions']) && count($post_data['args']['actions']) > 0) {
         $body['actions'] = $post_data['args']['actions'];
     }
 

@@ -19,6 +19,7 @@ Class checkRequest {
             $toJson = new normilizeJson();
             $data = $toJson->normalizeJson($data);
             $data = str_replace('\"', '"', $data);
+            $data = str_replace('\\"', '"', $data);
             $post_data = json_decode($data, true);
         }
 

@@ -126,7 +126,12 @@
         },
         {
           "name": "userIds",
-          "type": "Array",
+          "type": "List",
+          "structure": {
+            "name": "userId",
+            "type": "String",
+            "info": "Single user id"
+          },
           "info": "IDs of the users",
           "required": true
         }
@@ -213,7 +218,12 @@
         },
         {
           "name": "entries",
-          "type": "Array",
+          "type": "List",
+          "structure": {
+            "name": "entry",
+            "type": "JSON",
+            "info": "Single entry"
+          },
           "info": "List of entries to be copied. Example: [{\"from_path\":\"/123/sample.json\", \"to_path\": \"/321/sample.json\"}]",
           "required": true
         },
@@ -387,7 +397,12 @@
         },
         {
           "name": "deleteEntries",
-          "type": "Array",
+          "type": "List",
+          "structure": {
+            "name": "entry",
+            "type": "JSON",
+            "info": "Single entry"
+          },
           "info": "list of entries to delete. Exmaple: [{\"path\":\"/125\"}, {\"path\":\"/126\"}]",
           "required": true
         }
@@ -561,7 +576,8 @@
         },
         {
           "name": "format",
-          "type": "String",
+          "type": "Select",
+          "options": ["jpeg", "png"],
           "info": "The format for the thumbnail image, jpeg (default) or png. For images that are photos, jpeg should be preferred, while png is better for screenshots and digital arts. The default for this union is jpeg.",
           "required": true
         },
@@ -783,7 +799,12 @@
         },
         {
           "name": "entries",
-          "type": "Array",
+          "type": "List",
+          "structure": {
+            "name": "entry",
+            "type": "JSON",
+            "info": "Single entry"
+          },
           "info": "List of entries to be moved. Example: [{\"from_path\":\"/123/sample.json\", \"to_path\": \"/321/sample.json\"}]",
           "required": true
         },
@@ -951,7 +972,8 @@
         },
         {
           "name": "searchMode",
-          "type": "String",
+          "type": "Select",
+          "options":["filename", "filname_and_content", "deleted_filename"],
           "info": "The search mode (filename, filename_and_content, or deleted_filename). Note that searching file content is only available for Dropbox Business accounts. The default for this union is filename.",
           "required": false
         }
@@ -1000,7 +1022,7 @@
         },
         {
           "name": "clientModified",
-          "type": "String",
+          "type": "DatePicker",
           "info": "Timestamp(format=\"%Y-%m-%dT%H:%M:%SZ\") The value to store as the client_modified timestamp. ",
           "required": false
         },
@@ -1057,19 +1079,22 @@
         },
         {
           "name": "filterBy",
-          "type": "String",
+          "type": "Select",
+          "options":["docs_accessed", "docs_created"],
           "info": "Allows user to specify how the Paper docs should be filtered. Possible values: docs_accessed(default), docs_created",
           "required": false
         },
         {
           "name": "sortBy",
-          "type": "String",
+          "type": "Select",
+          "options":["accessed", "modified", "created"],
           "info": "Allows user to specify how the Paper docs should be sorted. Possible values: accessed(default), modified, created",
           "required": false
         },
         {
           "name": "sortOrder",
-          "type": "String",
+          "type": "Select",
+          "options":["ascending", "descending"],
           "info": "Allows user to specify the sort order of the result. Possible values: ascending(default), descending",
           "required": false
         },
@@ -1293,13 +1318,15 @@
         },
         {
           "name": "publicSharingPolicy",
-          "type": "String",
+          "type": "Select",
+          "options":["people_with_link_can_edit", "people_with_link_can_view_and_comment", "invite_only", "disabled"],
           "info": "This value applies to the non-team members. Possible values: people_with_link_can_edit, people_with_link_can_view_and_comment, invite_only, disabled",
           "required": true
         },
         {
           "name": "teamSharingPolicy",
-          "type": "String",
+          "type": "Select",
+          "options":["people_with_link_can_edit", "people_with_link_can_view_and_comment", "invite_only"],
           "info": "This value applies to the team members. Possible values: people_with_link_can_edit, people_with_link_can_view_and_comment, invite_only",
           "required": true
         }
@@ -1330,7 +1357,12 @@
         },
         {
           "name": "membersList",
-          "type": "Array",
+          "type": "List",
+          "structure": {
+            "name": "member",
+            "type": "JSON",
+            "info": "Single member"
+          },
           "info": "Users which should be added to the Paper doc. Specify only email or Dropbox account id. Example: [{\"member\": {\".tag\": \"email\",\"email\": \"justin@example.com\"},\"permission_level\":{\".tag\":\"view_and_comment\"}}]",
           "required": true
         },
@@ -1379,7 +1411,8 @@
         },
         {
           "name": "filterBy",
-          "type": "String",
+          "type": "Select",
+          "options":["shared", "visited"],
           "info": " Specify this attribute if you want to obtain users that have already accessed the Paper doc. Possible values: shared(default), visited",
           "required": false
         }
@@ -1503,7 +1536,12 @@
         },
         {
           "name": "membersList",
-          "type": "Array",
+          "type": "List",
+          "structure": {
+            "name": "member",
+            "type": "JSON",
+            "info": "Single member"
+          },
           "info": "Users which should be added to the Paper doc. Specify only email or Dropbox account id. Example: [{\".tag\": \"email\",\"email\": \"justin@example.com\"}]",
           "required": true
         },
@@ -1527,7 +1565,8 @@
         },
         {
           "name": "accessLevel",
-          "type": "String",
+          "type": "Select",
+          "options":["viewer", "owner", "editor", "viewer_no_comment"],
           "info": "AccessLevel union object, describing what access level we want to give new members. Possible values: viewer(default), owner, editor, viewer_no_comment.",
           "required": false
         }
@@ -1558,7 +1597,12 @@
         },
         {
           "name": "membersList",
-          "type": "Array",
+          "type": "List",
+          "structure": {
+            "name": "member",
+            "type": "JSON",
+            "info": "Single member"
+          },
           "info": "Users which should be added to the Paper doc. Specify only email or Dropbox account id. Example: [{\"member\" :{\".tag\": \"email\",\"email\": \"justin@example.com\"}}]",
           "required": true
         },
@@ -1657,7 +1701,8 @@
         },
         {
           "name": "requestedVisibility",
-          "type": "String",
+          "type": "Select",
+          "options":["public", "team_only"],
           "info": "The requested access for this shared link. Possible values: public, team_only",
           "required": false
         }
@@ -1688,7 +1733,12 @@
         },
         {
           "name": "options",
-          "type": "Array",
+          "type": "List",
+          "structure": {
+            "name": "option",
+            "type": "String",
+            "info": "Single option"
+          },
           "info": "A list of `FileAction`s corresponding to `FilePermission`s that should appear in the response's SharedFileMetadata.permissions field describing the actions the authenticated user can perform on the file.",
           "required": false
         }
@@ -1713,13 +1763,23 @@
         },
         {
           "name": "fileIds",
-          "type": "Array",
-          "info": " Files to query.",
+          "type": "List",
+          "structure": {
+            "name": "fileId",
+            "type": "String",
+            "info": "Single file id"
+          },
+          "info": "Files to query.",
           "required": true
         },
         {
           "name": "options",
-          "type": "Array",
+          "type": "List",
+          "structure": {
+            "name": "option",
+            "type": "String",
+            "info": "Single option"
+          },
           "info": "A list of `FileAction`s corresponding to `FilePermission`s that should appear in the response's SharedFileMetadata.permissions field describing the actions the authenticated user can perform on the file.",
           "required": false
         }
@@ -1750,7 +1810,12 @@
         },
         {
           "name": "options",
-          "type": "Array",
+          "type": "List",
+          "structure": {
+            "name": "option",
+            "type": "String",
+            "info": "Single option"
+          },
           "info": " A list of `FolderAction`s corresponding to `FolderPermission`s that should appear in the response's SharedFolderMetadata.permissions field describing the actions the authenticated user can perform on the folder.",
           "required": false
         }
@@ -1861,7 +1926,12 @@
         },
         {
           "name": "actions",
-          "type": "Array",
+          "type": "List",
+          "structure": {
+            "name": "action",
+            "type": "String",
+            "info": "Single action"
+          },
           "info": "The actions for which to return permissions on a member.",
           "required": false
         },
@@ -1892,7 +1962,12 @@
         },
         {
           "name": "fileIds",
-          "type": "Array",
+          "type": "List",
+          "structure": {
+            "name": "fileId",
+            "type": "String",
+            "info": "Single file id"
+          },
           "info": "Files for which you want to see members.",
           "required": true
         },
@@ -1959,7 +2034,12 @@
         },
         {
           "name": "actions",
-          "type": "Array",
+          "type": "List",
+          "structure": {
+            "name": "action",
+            "type": "String",
+            "info": "Single action"
+          },
           "info": "The actions for which to return permissions on a member.",
           "required": false
         }
@@ -2040,7 +2120,12 @@
         },
         {
           "name": "actions",
-          "type": "Array",
+          "type": "List",
+          "structure": {
+            "name": "action",
+            "type": "String",
+            "info": "Single action"
+          },
           "info": "A list of `FolderAction`s corresponding to `FolderPermission`s that should appear in the response's SharedFolderMetadata.permissions field describing the actions the authenticated user can perform on the folder.",
           "required": false
         }
@@ -2096,7 +2181,12 @@
         },
         {
           "name": "actions",
-          "type": "Array",
+          "type": "List",
+          "structure": {
+            "name": "action",
+            "type": "String",
+            "info": "Single action"
+          },
           "info": "A list of `FileAction`s corresponding to `FilePermission`s that should appear in the response's SharedFileMetadata.permissions field describing the actions the authenticated user can perform on the file.",
           "required": false
         }
@@ -2152,7 +2242,8 @@
         },
         {
           "name": "requestedVisibility",
-          "type": "String",
+          "type": "Select",
+          "options":["public", "team_only"],
           "info": "The requested access for this shared link. Possible values: public, team_only",
           "required": false
         }
@@ -2239,19 +2330,22 @@
         },
         {
           "name": "memberPolicy",
-          "type": "String",
+          "type": "Select",
+          "options":["team", "anyone"],
           "info": "Who can be a member of this shared folder. Only applicable if the current user is on a team. Possible values: team, anyone",
           "required": false
         },
         {
           "name": "aclUpdatePolicy",
-          "type": "String",
+          "type": "Select",
+          "options":["owner", "editors"],
           "info": "Who can add and remove members of this shared folder.  Possible values: owner, editors",
           "required": false
         },
         {
           "name": "sharedLinkPolicy",
-          "type": "String",
+          "type": "Select",
+          "options":["team", "anyone", "members"],
           "info": "The policy to apply to shared links created for content inside this shared folder. The current user must be on a team to set this policy to SharedLinkPolicy.members. Possible values: anyone, team, members",
           "required": false
         },
@@ -2263,19 +2357,26 @@
         },
         {
           "name": "actions",
-          "type": "Array",
+          "type": "List",
+          "structure": {
+            "name": "action",
+            "type": "String",
+            "info": "Single action"
+          },
           "info": "A list of `FolderAction`s corresponding to `FolderPermission`s that should appear in the response's SharedFolderMetadata.permissions field describing the actions the authenticated user can perform on the folder.",
           "required": false
         },
         {
           "name": "accessLevel",
-          "type": "String",
+          "type": "Select",
+          "options":["viewer", "viewer_no_comment"],
           "info": "The access level on the link for this file. Currently, it only accepts 'viewer' and 'viewer_no_comment'.",
           "required": false
         },
         {
           "name": "linkAudience",
-          "type": "String",
+          "type": "Select",
+          "options":["team", "public", "members"],
           "info": "The type of audience on the link for this file. Possible values: public, team, members",
           "required": false
         },
@@ -2287,13 +2388,15 @@
         },
         {
           "name": "linkPassword",
-          "type": "JSON",
+          "type": "Select",
+          "options":["remove_password", "set_password"],
           "info": "The password for the link. Possible values: remove_password, set_password",
           "required": false
         },
         {
           "name": "viewerInfoPolicy",
-          "type": "String",
+          "type": "Select",
+          "options":["enabled", "disabled"],
           "info": "Who can enable/disable viewer info for this shared folder.Possible values: enabled, disabled",
           "required": false
         }
@@ -2610,7 +2713,8 @@
         },
         {
           "name": "accessLevel",
-          "type": "String",
+          "type": "Select",
+          "options":["viewer"],
           "info": "Defines the access levels for collaborators. Currently only available: viewer",
           "required": true
         }
@@ -2647,7 +2751,8 @@
         },
         {
           "name": "accessLevel",
-          "type": "String",
+          "type": "Select",
+          "options":["viewer", "editor"],
           "info": "Defines the access levels for collaborators. Currently only available: viewer, editor",
           "required": true
         }
@@ -2678,19 +2783,22 @@
         },
         {
           "name": "memberPolicy",
-          "type": "String",
+          "type": "Select",
+          "options":["team", "anyone"],
           "info": "Who can be a member of this shared folder. Only applicable if the current user is on a team. Possible values: team, anyone",
           "required": false
         },
         {
           "name": "aclUpdatePolicy",
-          "type": "String",
+          "type": "Select",
+          "options":["owner", "editors"],
           "info": "Who can add and remove members of this shared folder.  Possible values: owner, editors",
           "required": false
         },
         {
           "name": "sharedLinkPolicy",
-          "type": "String",
+          "type": "Select",
+          "options":["team", "anyone", "members"],
           "info": "The policy to apply to shared links created for content inside this shared folder. The current user must be on a team to set this policy to SharedLinkPolicy.members. Possible values: anyone, team, members",
           "required": false
         },
@@ -2702,19 +2810,26 @@
         },
         {
           "name": "actions",
-          "type": "Array",
+          "type": "List",
+          "structure": {
+            "name": "action",
+            "type": "String",
+            "info": "Single action"
+          },
           "info": "A list of `FolderAction`s corresponding to `FolderPermission`s that should appear in the response's SharedFolderMetadata.permissions field describing the actions the authenticated user can perform on the folder.",
           "required": false
         },
         {
           "name": "accessLevel",
-          "type": "String",
+          "type": "Select",
+          "options":["viewer", "editor"],
           "info": "The access level on the link for this file. Currently, it only accepts 'viewer' and 'viewer_no_comment'.",
           "required": false
         },
         {
           "name": "linkAudience",
-          "type": "String",
+          "type": "Select",
+          "options":["team", "public", "members"],
           "info": "The type of audience on the link for this file. Possible values: public, team, members",
           "required": false
         },
@@ -2726,13 +2841,15 @@
         },
         {
           "name": "linkPassword",
-          "type": "JSON",
+          "type": "Select",
+          "options":["remove_password", "set_password"],
           "info": "The password for the link. Possible values: remove_password, set_password",
           "required": false
         },
         {
           "name": "viewerInfoPolicy",
-          "type": "String",
+          "type": "Select",
+          "options":["enabled", "disabled"],
           "info": "Who can enable/disable viewer info for this shared folder.Possible values: enabled, disabled",
           "required": false
         }

@@ -32,7 +32,7 @@ $app->post('/api/Dropbox/updateFolderPolicy', function ($request, $response, $ar
     if(isset($post_data['args']['forceAsync']) && strlen($post_data['args']['forceAsync']) > 0){
         $body['force_async'] = $post_data['args']['forceAsync'];
     }
-    if(isset($post_data['args']['actions']) && strlen($post_data['args']['actions']) > 0){
+    if(isset($post_data['args']['actions']) && count($post_data['args']['actions']) > 0){
         $body['actions'] = $post_data['args']['actions'];
     }
     if(isset($post_data['args']['accessLevel']) && strlen($post_data['args']['accessLevel']) > 0){
