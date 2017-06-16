@@ -1,20 +1,5 @@
 <?php
-$app->group('/api/Dropbox/webhookEvent', function () {
-
-    $this->get('', function ($request, $response, $args) {
-
-        $challenge = $request->getQueryParams()['challenge'];
-        $body[] = $challenge;
-        $client = new GuzzleHttp\Client();
-        $resp = $client->request('POST', 'http://d7c2294c.ngrok.io', [
-            'json' => $body
-        ]);
-        echo $challenge;
-
-
-    });
-
-    $this->post('', function ($request, $response, $args) {
+$app->post('/api/Dropbox/webhookEvent', function ($request, $response, $args) {
         $checkRequest = $this->validation;
         $validateRes = $checkRequest->validate($request, []);
         if (!empty($validateRes) && isset($validateRes['callback']) && $validateRes['callback'] == 'error') {
@@ -29,7 +14,7 @@ $app->group('/api/Dropbox/webhookEvent', function () {
         ]);
 
         $reply = [
-            "http_resp" => "",
+            "http_resp" => $post_data['args']['body']['challenge'],
             "client_msg" => $post_data['args']['body'],
             "params" => $post_data['args']['params']
         ];
@@ -39,4 +24,3 @@ $app->group('/api/Dropbox/webhookEvent', function () {
         return $response->withHeader('Content-type', 'application/json')->withStatus(200)->withJson($result);
 
     });
-});
