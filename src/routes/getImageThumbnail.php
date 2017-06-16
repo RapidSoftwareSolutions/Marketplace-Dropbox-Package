@@ -4,12 +4,13 @@ $app->post('/api/Dropbox/getImageThumbnail', function ($request, $response, $arg
 
     //checking properly formed json
     $checkRequest = $this->validation;
-    $validateRes = $checkRequest->validate($request, ['accessToken', 'imagePath', 'format']);
+    $validateRes = $checkRequest->validate($request, ['accessToken']);
     if (!empty($validateRes) && isset($validateRes['callback']) && $validateRes['callback'] == 'error') {
         return $response->withHeader('Content-type', 'application/json')->withStatus(200)->withJson($validateRes);
     } else {
         $post_data = $validateRes;
     }
+    //forming request to vendor API
     //forming request to vendor API
     $query_str = "https://content.dropboxapi.com/2/files/get_thumbnail";
     $body = array();
@@ -21,67 +22,55 @@ $app->post('/api/Dropbox/getImageThumbnail', function ($request, $response, $arg
     }
     //requesting remote API
     $client = new GuzzleHttp\Client();
-    $result = [];
 
-    $client->postAsync($query_str,
-        [
+    try {
 
+        $resp = $client->request('POST', $query_str, [
             'headers' => [
                 "Authorization" => "Bearer " . $post_data['args']['accessToken'],
                 "Dropbox-API-Arg" => json_encode($body)
             ],
             'stream' => true
-        ]
-    )
-        ->then(
-            function (\Psr\Http\Message\ResponseInterface $response) use ($client, $post_data, $settings, &$result) {
-                $responseApi = $response->getBody()->getContents();
-                $size = strlen($responseApi);
-                if (in_array($response->getStatusCode(), ['200', '201', '202', '203', '204'])) {
-                    try {
-                        $fileUrl = $client->post($settings['uploadServiceUrl'], [
-                            'multipart' => [
-                                [
-                                    'name' => 'length',
-                                    'contents' => $size
-                                ],
-                                [
-                                    'name' => 'file',
-                                    'filename' => bin2hex(random_bytes(5)) . $settings['fileExtensions'][$post_data['args']['format']],
-                                    'contents' => $responseApi
-                                ],
-                            ]
-                        ]);
-                        $gcloud = $fileUrl->getBody()->getContents();
-                        $resultDecoded = json_decode($gcloud, true);
-                        $result['callback'] = 'success';
-                        $result['contextWrites']['to'] = ($resultDecoded != NULL) ? $resultDecoded : $gcloud;
-                    } catch (GuzzleHttp\Exception\BadResponseException $exception) {
-                        $result['callback'] = 'error';
-                        $result['contextWrites']['to']['status_code'] = 'INTERNAL_PACKAGE_ERROR';
-                        $result['contextWrites']['to']['status_msg'] = 'Something went wrong during file link receiving.';
-                    }
-                } else {
-                    $resultDecoded = json_decode($responseApi, true);
-                    $result['callback'] = 'error';
-                    $result['contextWrites']['to']['status_code'] = 'API_ERROR';
-                    $result['contextWrites']['to']['status_msg'] = ($resultDecoded != NULL) ? $resultDecoded : $responseApi;
-                }
-            },
-            function (GuzzleHttp\Exception\BadResponseException $exception) use (&$result) {
+        ]);
+        $responseBody = $resp->getBody()->getContents();
+        if ($resp->getStatusCode() == 200) {
+            $size = $resp->getHeader('Content-Length')[0];
+            $contentDisposition = $resp->getHeader('Content-Disposition')[0];
+            $contentDisposition = str_replace("attachment", "", $contentDisposition);
+            $contentDisposition = str_replace('filename=', "", $contentDisposition);
+            $contentDisposition = str_replace(';', "", $contentDisposition);
+            $uploadServiceResponse = $client->post($settings['uploadServiceUrl'], [
+                'multipart' => [
+                    [
+                        "name" => "file",
+                        "filename" => trim($contentDisposition),
+                        "contents" => $responseBody
+                    ],
+                    [
+                        'name' => 'length',
+                        'contents' => $size
+                    ]
+                ]
+            ]);
+            $uploadServiceResponseBody = $uploadServiceResponse->getBody()->getContents();
+            if ($uploadServiceResponse->getStatusCode() == 200) {
+                $result['callback'] = 'success';
+                $result['contextWrites']['to'] = json_decode($uploadServiceResponse->getBody());
+            }
+            else {
                 $result['callback'] = 'error';
                 $result['contextWrites']['to']['status_code'] = 'API_ERROR';
-                $result['contextWrites']['to']['status_msg'] = $exception->getMessage();
-            },
-            function (GuzzleHttp\Exception\ConnectException $exception) use (&$result) {
-                $result['callback'] = 'error';
-                $result['contextWrites']['to']['status_code'] = 'INTERNAL_PACKAGE_ERROR';
-                $result['contextWrites']['to']['status_msg'] = 'Something went wrong inside the package.';
+                $result['contextWrites']['to']['status_msg'] = is_array($uploadServiceResponseBody) ? $uploadServiceResponseBody : json_decode($uploadServiceResponseBody);
             }
-        )
-        ->wait();
-
-
-    return $response->withHeader('Content-type', 'application/json')->withJson($result, 200, JSON_UNESCAPED_SLASHES);
-
+        } else {
+            $result['callback'] = 'error';
+            $result['contextWrites']['to']['status_code'] = 'API_ERROR';
+            $result['contextWrites']['to']['status_msg'] = is_array($responseBody) ? $responseBody : json_decode($responseBody);
+        }
+    } catch (\GuzzleHttp\Exception\BadResponseException $exception) {
+        $result['callback'] = 'error';
+        $result['contextWrites']['to']['status_code'] = 'API_ERROR';
+        $result['contextWrites']['to']['status_msg'] = json_decode($exception->getResponse()->getBody());
+    }
+    return $response->withHeader('Content-type', 'application/json')->withStatus(200)->withJson($result);
 });
