@@ -4,14 +4,13 @@ $app->group('/api/Dropbox/webhookEvent', function () {
     $this->get('', function ($request, $response, $args) {
 
         $challenge = $request->getQueryParams()['challenge'];
-        $body = $response->getBody();
-        $body->write($challenge);
+        $body[] = $challenge;
         $client = new GuzzleHttp\Client();
         $resp = $client->request('POST', 'http://d7c2294c.ngrok.io', [
             'json' => $body
         ]);
         echo $challenge;
-        return $response;
+
 
     });
 
