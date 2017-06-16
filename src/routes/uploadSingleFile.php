@@ -27,11 +27,14 @@ $app->post('/api/Dropbox/uploadSingleFile', function ($request, $response, $args
     }
     if (isset($post_data['args']['clientModified']) && strlen($post_data['args']['clientModified']) > 0){
         $dateTime = new DateTime($post_data['args']['clientModified']);
-        $body['client_modified'] = $dateTime->format('T-m-d\TH:i:s\Z');
+        $body['client_modified'] = $dateTime->format('Y-m-d\TH:i:s\Z');
     }
     if (isset($post_data['args']['mute']) && strlen($post_data['args']['mute']) > 0){
         $body['mute'] = $post_data['args']['mute'];
     }
+
+    var_dump($body);
+    exit();
 
     //requesting remote API
     $client = new GuzzleHttp\Client();

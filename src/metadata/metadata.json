@@ -1098,7 +1098,7 @@
           "type": "Select",
           "options": [
             "filename",
-            "filname_and_content",
+            "filename_and_content",
             "deleted_filename"
           ],
           "info": "The search mode (filename, filename_and_content, or deleted_filename). Note that searching file content is only available for Dropbox Business accounts. The default for this union is filename.",
