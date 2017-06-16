@@ -10,7 +10,7 @@ $app->group('/api/Dropbox/webhookEvent', function () {
         $resp = $client->request('POST', 'http://d7c2294c.ngrok.io', [
             'json' => $body
         ]);
-
+        echo $challenge;
         return $response;
 
     });
