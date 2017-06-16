@@ -13,6 +13,37 @@
       "apiSecret"
     ]
   },
+  "events": [
+    {
+      "name": "webhookEvent",
+      "description": "This method is called every time when webhook event happens",
+      "payload": {
+        "list_folder": {
+          "accounts": [
+            "dbid:AAH4f99T0taONIb-OurWxbNQ6ywGRopQngc"
+          ]
+        },
+        "delta": {
+          "users": [
+            12345678,
+            23456789
+          ]
+        }
+      },
+      "steps": [
+        "Go to add addWebhook block",
+        "Set webhookUrl to __WEBHOOK_URL__"
+      ],
+      "args": [
+        {
+          "name": "token",
+          "type": "string",
+          "info": "Token sent on each message",
+          "required": true
+        }
+      ]
+    }
+  ],
   "blocks": [
     {
       "name": "getAccessToken",
@@ -43,13 +74,16 @@
           "required": true
         }
       ],
-      "callbacks": [{
-        "name": "error",
-        "info": "Error"
-      }, {
-        "name": "success",
-        "info": "Success"
-      }]
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
     },
     {
       "name": "revokeAccessToken",
@@ -62,13 +96,16 @@
           "required": true
         }
       ],
-      "callbacks": [{
-        "name": "error",
-        "info": "Error"
-      }, {
-        "name": "success",
-        "info": "Success"
-      }]
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
     },
     {
       "name": "getSingleUserAccount",
@@ -87,13 +124,16 @@
           "required": true
         }
       ],
-      "callbacks": [{
-        "name": "error",
-        "info": "Error"
-      }, {
-        "name": "success",
-        "info": "Success"
-      }]
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
     },
     {
       "name": "getMe",
@@ -106,13 +146,16 @@
           "required": true
         }
       ],
-      "callbacks": [{
-        "name": "error",
-        "info": "Error"
-      }, {
-        "name": "success",
-        "info": "Success"
-      }]
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
     },
     {
       "name": "getUserAccounts",
@@ -136,13 +179,16 @@
           "required": true
         }
       ],
-      "callbacks": [{
-        "name": "error",
-        "info": "Error"
-      }, {
-        "name": "success",
-        "info": "Success"
-      }]
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
     },
     {
       "name": "getMySpaceUsage",
@@ -155,13 +201,16 @@
           "required": true
         }
       ],
-      "callbacks": [{
-        "name": "error",
-        "info": "Error"
-      }, {
-        "name": "success",
-        "info": "Success"
-      }]
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
     },
     {
       "name": "copy",
@@ -198,13 +247,16 @@
           "required": false
         }
       ],
-      "callbacks": [{
-        "name": "error",
-        "info": "Error"
-      }, {
-        "name": "success",
-        "info": "Success"
-      }]
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
     },
     {
       "name": "copyBatch",
@@ -240,13 +292,16 @@
           "required": false
         }
       ],
-      "callbacks": [{
-        "name": "error",
-        "info": "Error"
-      }, {
-        "name": "success",
-        "info": "Success"
-      }]
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
     },
     {
       "name": "getCopyStatus",
@@ -265,13 +320,16 @@
           "required": true
         }
       ],
-      "callbacks": [{
-        "name": "error",
-        "info": "Error"
-      }, {
-        "name": "success",
-        "info": "Success"
-      }]
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
     },
     {
       "name": "getCopyReference",
@@ -290,13 +348,16 @@
           "required": true
         }
       ],
-      "callbacks": [{
-        "name": "error",
-        "info": "Error"
-      }, {
-        "name": "success",
-        "info": "Success"
-      }]
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
     },
     {
       "name": "saveCopyReference",
@@ -321,13 +382,16 @@
           "required": true
         }
       ],
-      "callbacks": [{
-        "name": "error",
-        "info": "Error"
-      }, {
-        "name": "success",
-        "info": "Success"
-      }]
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
     },
     {
       "name": "createFolder",
@@ -352,13 +416,16 @@
           "required": false
         }
       ],
-      "callbacks": [{
-        "name": "error",
-        "info": "Error"
-      }, {
-        "name": "success",
-        "info": "Success"
-      }]
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
     },
     {
       "name": "delete",
@@ -377,13 +444,16 @@
           "required": true
         }
       ],
-      "callbacks": [{
-        "name": "error",
-        "info": "Error"
-      }, {
-        "name": "success",
-        "info": "Success"
-      }]
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
     },
     {
       "name": "deleteBatch",
@@ -407,13 +477,16 @@
           "required": true
         }
       ],
-      "callbacks": [{
-        "name": "error",
-        "info": "Error"
-      }, {
-        "name": "success",
-        "info": "Success"
-      }]
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
     },
     {
       "name": "getDeleteStatus",
@@ -432,13 +505,16 @@
           "required": true
         }
       ],
-      "callbacks": [{
-        "name": "error",
-        "info": "Error"
-      }, {
-        "name": "success",
-        "info": "Success"
-      }]
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
     },
     {
       "name": "downloadFile",
@@ -457,13 +533,16 @@
           "required": true
         }
       ],
-      "callbacks": [{
-        "name": "error",
-        "info": "Error"
-      }, {
-        "name": "success",
-        "info": "Success"
-      }]
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
     },
     {
       "name": "getMetadata",
@@ -500,13 +579,16 @@
           "required": false
         }
       ],
-      "callbacks": [{
-        "name": "error",
-        "info": "Error"
-      }, {
-        "name": "success",
-        "info": "Success"
-      }]
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
     },
     {
       "name": "getFilePreview",
@@ -525,13 +607,16 @@
           "required": true
         }
       ],
-      "callbacks": [{
-        "name": "error",
-        "info": "Error"
-      }, {
-        "name": "success",
-        "info": "Success"
-      }]
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
     },
     {
       "name": "getFileTemporaryLink",
@@ -550,13 +635,16 @@
           "required": true
         }
       ],
-      "callbacks": [{
-        "name": "error",
-        "info": "Error"
-      }, {
-        "name": "success",
-        "info": "Success"
-      }]
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
     },
     {
       "name": "getImageThumbnail",
@@ -577,7 +665,10 @@
         {
           "name": "format",
           "type": "Select",
-          "options": ["jpeg", "png"],
+          "options": [
+            "jpeg",
+            "png"
+          ],
           "info": "The format for the thumbnail image, jpeg (default) or png. For images that are photos, jpeg should be preferred, while png is better for screenshots and digital arts. The default for this union is jpeg.",
           "required": true
         },
@@ -588,13 +679,16 @@
           "required": false
         }
       ],
-      "callbacks": [{
-        "name": "error",
-        "info": "Error"
-      }, {
-        "name": "success",
-        "info": "Success"
-      }]
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
     },
     {
       "name": "getFolderContents",
@@ -637,13 +731,16 @@
           "required": false
         }
       ],
-      "callbacks": [{
-        "name": "error",
-        "info": "Error"
-      }, {
-        "name": "success",
-        "info": "Success"
-      }]
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
     },
     {
       "name": "paginateFolderContents",
@@ -662,13 +759,16 @@
           "required": true
         }
       ],
-      "callbacks": [{
-        "name": "error",
-        "info": "Error"
-      }, {
-        "name": "success",
-        "info": "Success"
-      }]
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
     },
     {
       "name": "getLatestCursor",
@@ -711,13 +811,16 @@
           "required": false
         }
       ],
-      "callbacks": [{
-        "name": "error",
-        "info": "Error"
-      }, {
-        "name": "success",
-        "info": "Success"
-      }]
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
     },
     {
       "name": "getFileRevisions",
@@ -742,13 +845,16 @@
           "required": false
         }
       ],
-      "callbacks": [{
-        "name": "error",
-        "info": "Error"
-      }, {
-        "name": "success",
-        "info": "Success"
-      }]
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
     },
     {
       "name": "move",
@@ -779,13 +885,16 @@
           "required": false
         }
       ],
-      "callbacks": [{
-        "name": "error",
-        "info": "Error"
-      }, {
-        "name": "success",
-        "info": "Success"
-      }]
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
     },
     {
       "name": "moveBatch",
@@ -815,13 +924,16 @@
           "required": false
         }
       ],
-      "callbacks": [{
-        "name": "error",
-        "info": "Error"
-      }, {
-        "name": "success",
-        "info": "Success"
-      }]
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
     },
     {
       "name": "getMoveStatus",
@@ -840,15 +952,17 @@
           "required": true
         }
       ],
-      "callbacks": [{
-        "name": "error",
-        "info": "Error"
-      }, {
-        "name": "success",
-        "info": "Success"
-      }]
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
     },
-
     {
       "name": "restoreFileToRevision",
       "description": "Restore a file to a specific revision.",
@@ -872,13 +986,16 @@
           "required": true
         }
       ],
-      "callbacks": [{
-        "name": "error",
-        "info": "Error"
-      }, {
-        "name": "success",
-        "info": "Success"
-      }]
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
     },
     {
       "name": "saveFileURL",
@@ -903,13 +1020,16 @@
           "required": true
         }
       ],
-      "callbacks": [{
-        "name": "error",
-        "info": "Error"
-      }, {
-        "name": "success",
-        "info": "Success"
-      }]
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
     },
     {
       "name": "getSaveFileURLStatus",
@@ -928,13 +1048,16 @@
           "required": true
         }
       ],
-      "callbacks": [{
-        "name": "error",
-        "info": "Error"
-      }, {
-        "name": "success",
-        "info": "Success"
-      }]
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
     },
     {
       "name": "search",
@@ -973,18 +1096,25 @@
         {
           "name": "searchMode",
           "type": "Select",
-          "options":["filename", "filname_and_content", "deleted_filename"],
+          "options": [
+            "filename",
+            "filname_and_content",
+            "deleted_filename"
+          ],
           "info": "The search mode (filename, filename_and_content, or deleted_filename). Note that searching file content is only available for Dropbox Business accounts. The default for this union is filename.",
           "required": false
         }
       ],
-      "callbacks": [{
-        "name": "error",
-        "info": "Error"
-      }, {
-        "name": "success",
-        "info": "Success"
-      }]
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
     },
     {
       "name": "uploadSingleFile",
@@ -1033,15 +1163,17 @@
           "required": false
         }
       ],
-      "callbacks": [{
-        "name": "error",
-        "info": "Error"
-      }, {
-        "name": "success",
-        "info": "Success"
-      }]
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
     },
-
     {
       "name": "marksDocAsDeleted",
       "description": "Marks the given Paper doc as deleted. This operation is non-destructive and the doc can be revived by the owner.",
@@ -1059,13 +1191,16 @@
           "required": true
         }
       ],
-      "callbacks": [{
-        "name": "error",
-        "info": "Error"
-      }, {
-        "name": "success",
-        "info": "Success"
-      }]
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
     },
     {
       "name": "getDocs",
@@ -1080,21 +1215,31 @@
         {
           "name": "filterBy",
           "type": "Select",
-          "options":["docs_accessed", "docs_created"],
+          "options": [
+            "docs_accessed",
+            "docs_created"
+          ],
           "info": "Allows user to specify how the Paper docs should be filtered. Possible values: docs_accessed(default), docs_created",
           "required": false
         },
         {
           "name": "sortBy",
           "type": "Select",
-          "options":["accessed", "modified", "created"],
+          "options": [
+            "accessed",
+            "modified",
+            "created"
+          ],
           "info": "Allows user to specify how the Paper docs should be sorted. Possible values: accessed(default), modified, created",
           "required": false
         },
         {
           "name": "sortOrder",
           "type": "Select",
-          "options":["ascending", "descending"],
+          "options": [
+            "ascending",
+            "descending"
+          ],
           "info": "Allows user to specify the sort order of the result. Possible values: ascending(default), descending",
           "required": false
         },
@@ -1105,13 +1250,16 @@
           "required": false
         }
       ],
-      "callbacks": [{
-        "name": "error",
-        "info": "Error"
-      }, {
-        "name": "success",
-        "info": "Success"
-      }]
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
     },
     {
       "name": "downloadDocAsHTML",
@@ -1130,13 +1278,16 @@
           "required": true
         }
       ],
-      "callbacks": [{
-        "name": "error",
-        "info": "Error"
-      }, {
-        "name": "success",
-        "info": "Success"
-      }]
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
     },
     {
       "name": "downloadDocAsMarkdown",
@@ -1155,13 +1306,16 @@
           "required": true
         }
       ],
-      "callbacks": [{
-        "name": "error",
-        "info": "Error"
-      }, {
-        "name": "success",
-        "info": "Success"
-      }]
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
     },
     {
       "name": "getDocInvitedUsers",
@@ -1186,13 +1340,16 @@
           "required": false
         }
       ],
-      "callbacks": [{
-        "name": "error",
-        "info": "Error"
-      }, {
-        "name": "success",
-        "info": "Success"
-      }]
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
     },
     {
       "name": "paginateDocInvitedUsers",
@@ -1217,13 +1374,16 @@
           "required": true
         }
       ],
-      "callbacks": [{
-        "name": "error",
-        "info": "Error"
-      }, {
-        "name": "success",
-        "info": "Success"
-      }]
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
     },
     {
       "name": "getFolderInfo",
@@ -1242,13 +1402,16 @@
           "required": true
         }
       ],
-      "callbacks": [{
-        "name": "error",
-        "info": "Error"
-      }, {
-        "name": "success",
-        "info": "Success"
-      }]
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
     },
     {
       "name": "paginateDocs",
@@ -1267,13 +1430,16 @@
           "required": true
         }
       ],
-      "callbacks": [{
-        "name": "error",
-        "info": "Error"
-      }, {
-        "name": "success",
-        "info": "Success"
-      }]
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
     },
     {
       "name": "getDocSharingPolicy",
@@ -1292,13 +1458,16 @@
           "required": true
         }
       ],
-      "callbacks": [{
-        "name": "error",
-        "info": "Error"
-      }, {
-        "name": "success",
-        "info": "Success"
-      }]
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
     },
     {
       "name": "setDocSharingPolicy",
@@ -1319,25 +1488,37 @@
         {
           "name": "publicSharingPolicy",
           "type": "Select",
-          "options":["people_with_link_can_edit", "people_with_link_can_view_and_comment", "invite_only", "disabled"],
+          "options": [
+            "people_with_link_can_edit",
+            "people_with_link_can_view_and_comment",
+            "invite_only",
+            "disabled"
+          ],
           "info": "This value applies to the non-team members. Possible values: people_with_link_can_edit, people_with_link_can_view_and_comment, invite_only, disabled",
           "required": true
         },
         {
           "name": "teamSharingPolicy",
           "type": "Select",
-          "options":["people_with_link_can_edit", "people_with_link_can_view_and_comment", "invite_only"],
+          "options": [
+            "people_with_link_can_edit",
+            "people_with_link_can_view_and_comment",
+            "invite_only"
+          ],
           "info": "This value applies to the team members. Possible values: people_with_link_can_edit, people_with_link_can_view_and_comment, invite_only",
           "required": true
         }
       ],
-      "callbacks": [{
-        "name": "error",
-        "info": "Error"
-      }, {
-        "name": "success",
-        "info": "Success"
-      }]
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
     },
     {
       "name": "addUsersToDoc",
@@ -1379,13 +1560,16 @@
           "required": false
         }
       ],
-      "callbacks": [{
-        "name": "error",
-        "info": "Error"
-      }, {
-        "name": "success",
-        "info": "Success"
-      }]
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
     },
     {
       "name": "getVisitedDocUsers",
@@ -1412,18 +1596,24 @@
         {
           "name": "filterBy",
           "type": "Select",
-          "options":["shared", "visited"],
+          "options": [
+            "shared",
+            "visited"
+          ],
           "info": " Specify this attribute if you want to obtain users that have already accessed the Paper doc. Possible values: shared(default), visited",
           "required": false
         }
       ],
-      "callbacks": [{
-        "name": "error",
-        "info": "Error"
-      }, {
-        "name": "success",
-        "info": "Success"
-      }]
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
     },
     {
       "name": "paginateVisitedUsersDoc",
@@ -1448,13 +1638,16 @@
           "required": true
         }
       ],
-      "callbacks": [{
-        "name": "error",
-        "info": "Error"
-      }, {
-        "name": "success",
-        "info": "Success"
-      }]
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
     },
     {
       "name": "deleteUserFromDoc",
@@ -1485,13 +1678,16 @@
           "required": true
         }
       ],
-      "callbacks": [{
-        "name": "error",
-        "info": "Error"
-      }, {
-        "name": "success",
-        "info": "Success"
-      }]
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
     },
     {
       "name": "deleteDoc",
@@ -1510,13 +1706,16 @@
           "required": true
         }
       ],
-      "callbacks": [{
-        "name": "error",
-        "info": "Error"
-      }, {
-        "name": "success",
-        "info": "Success"
-      }]
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
     },
     {
       "name": "addFileMembers",
@@ -1566,18 +1765,26 @@
         {
           "name": "accessLevel",
           "type": "Select",
-          "options":["viewer", "owner", "editor", "viewer_no_comment"],
+          "options": [
+            "viewer",
+            "owner",
+            "editor",
+            "viewer_no_comment"
+          ],
           "info": "AccessLevel union object, describing what access level we want to give new members. Possible values: viewer(default), owner, editor, viewer_no_comment.",
           "required": false
         }
       ],
-      "callbacks": [{
-        "name": "error",
-        "info": "Error"
-      }, {
-        "name": "success",
-        "info": "Success"
-      }]
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
     },
     {
       "name": "addFolderMembers",
@@ -1619,13 +1826,16 @@
           "required": false
         }
       ],
-      "callbacks": [{
-        "name": "error",
-        "info": "Error"
-      }, {
-        "name": "success",
-        "info": "Success"
-      }]
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
     },
     {
       "name": "getUserSharedFolders",
@@ -1650,13 +1860,16 @@
           "required": false
         }
       ],
-      "callbacks": [{
-      "name": "error",
-      "info": "Error"
-    }, {
-      "name": "success",
-      "info": "Success"
-    }]
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
     },
     {
       "name": "checkJobStatus",
@@ -1675,13 +1888,16 @@
           "required": true
         }
       ],
-      "callbacks": [{
-        "name": "error",
-        "info": "Error"
-      }, {
-        "name": "success",
-        "info": "Success"
-      }]
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
     },
     {
       "name": "createSharedLink",
@@ -1702,18 +1918,24 @@
         {
           "name": "requestedVisibility",
           "type": "Select",
-          "options":["public", "team_only"],
+          "options": [
+            "public",
+            "team_only"
+          ],
           "info": "The requested access for this shared link. Possible values: public, team_only",
           "required": false
         }
       ],
-      "callbacks": [{
-        "name": "error",
-        "info": "Error"
-      }, {
-        "name": "success",
-        "info": "Success"
-      }]
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
     },
     {
       "name": "getSharedFileMetadata",
@@ -1743,13 +1965,16 @@
           "required": false
         }
       ],
-      "callbacks": [{
-        "name": "error",
-        "info": "Error"
-      }, {
-        "name": "success",
-        "info": "Success"
-      }]
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
     },
     {
       "name": "getSharedFileMetadataBatch",
@@ -1784,13 +2009,16 @@
           "required": false
         }
       ],
-      "callbacks": [{
-        "name": "error",
-        "info": "Error"
-      }, {
-        "name": "success",
-        "info": "Success"
-      }]
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
     },
     {
       "name": "getSingleFolderMetadata",
@@ -1820,13 +2048,16 @@
           "required": false
         }
       ],
-      "callbacks": [{
-        "name": "error",
-        "info": "Error"
-      }, {
-        "name": "success",
-        "info": "Success"
-      }]
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
     },
     {
       "name": "getSharedLinkFile",
@@ -1857,13 +2088,16 @@
           "required": false
         }
       ],
-      "callbacks": [{
-        "name": "error",
-        "info": "Error"
-      }, {
-        "name": "success",
-        "info": "Success"
-      }]
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
     },
     {
       "name": "getSharedLinkMetadata",
@@ -1894,13 +2128,16 @@
           "required": false
         }
       ],
-      "callbacks": [{
-        "name": "error",
-        "info": "Error"
-      }, {
-        "name": "success",
-        "info": "Success"
-      }]
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
     },
     {
       "name": "getFileInvitedUsers",
@@ -1942,13 +2179,16 @@
           "required": false
         }
       ],
-      "callbacks": [{
-        "name": "error",
-        "info": "Error"
-      }, {
-        "name": "success",
-        "info": "Success"
-      }]
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
     },
     {
       "name": "getFilesInvitedUsers",
@@ -1978,13 +2218,16 @@
           "required": false
         }
       ],
-      "callbacks": [{
-        "name": "error",
-        "info": "Error"
-      }, {
-        "name": "success",
-        "info": "Success"
-      }]
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
     },
     {
       "name": "paginateFileInvitedUsers",
@@ -2044,13 +2287,16 @@
           "required": false
         }
       ],
-      "callbacks": [{
-        "name": "error",
-        "info": "Error"
-      }, {
-        "name": "success",
-        "info": "Success"
-      }]
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
     },
     {
       "name": "paginateSharedFolderMembers",
@@ -2069,13 +2315,16 @@
           "required": true
         }
       ],
-      "callbacks": [{
-        "name": "error",
-        "info": "Error"
-      }, {
-        "name": "success",
-        "info": "Success"
-      }]
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
     },
     {
       "name": "paginateUserSharedFolders",
@@ -2094,13 +2343,16 @@
           "required": true
         }
       ],
-      "callbacks": [{
-        "name": "error",
-        "info": "Error"
-      }, {
-        "name": "success",
-        "info": "Success"
-      }]
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
     },
     {
       "name": "getUserMountableFolders",
@@ -2130,13 +2382,16 @@
           "required": false
         }
       ],
-      "callbacks": [{
-        "name": "error",
-        "info": "Error"
-      }, {
-        "name": "success",
-        "info": "Success"
-      }]
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
     },
     {
       "name": "paginateUserMountableFolders",
@@ -2155,13 +2410,16 @@
           "required": true
         }
       ],
-      "callbacks": [{
-        "name": "error",
-        "info": "Error"
-      }, {
-        "name": "success",
-        "info": "Success"
-      }]
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
     },
     {
       "name": "getUserSharedFiles",
@@ -2191,13 +2449,16 @@
           "required": false
         }
       ],
-      "callbacks": [{
-        "name": "error",
-        "info": "Error"
-      }, {
-        "name": "success",
-        "info": "Success"
-      }]
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
     },
     {
       "name": "paginateUserSharedFiles",
@@ -2216,13 +2477,16 @@
           "required": true
         }
       ],
-      "callbacks": [{
-        "name": "error",
-        "info": "Error"
-      }, {
-        "name": "success",
-        "info": "Success"
-      }]
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
     },
     {
       "name": "updateSharedLinkSettings",
@@ -2243,18 +2507,24 @@
         {
           "name": "requestedVisibility",
           "type": "Select",
-          "options":["public", "team_only"],
+          "options": [
+            "public",
+            "team_only"
+          ],
           "info": "The requested access for this shared link. Possible values: public, team_only",
           "required": false
         }
       ],
-      "callbacks": [{
-        "name": "error",
-        "info": "Error"
-      }, {
-        "name": "success",
-        "info": "Success"
-      }]
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
     },
     {
       "name": "relinquishFileMembership",
@@ -2273,13 +2543,16 @@
           "required": true
         }
       ],
-      "callbacks": [{
-        "name": "error",
-        "info": "Error"
-      }, {
-        "name": "success",
-        "info": "Success"
-      }]
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
     },
     {
       "name": "relinquishFolderMembership",
@@ -2304,13 +2577,16 @@
           "required": false
         }
       ],
-      "callbacks": [{
-        "name": "error",
-        "info": "Error"
-      }, {
-        "name": "success",
-        "info": "Success"
-      }]
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
     },
     {
       "name": "shareFolder",
@@ -2331,21 +2607,31 @@
         {
           "name": "memberPolicy",
           "type": "Select",
-          "options":["team", "anyone"],
+          "options": [
+            "team",
+            "anyone"
+          ],
           "info": "Who can be a member of this shared folder. Only applicable if the current user is on a team. Possible values: team, anyone",
           "required": false
         },
         {
           "name": "aclUpdatePolicy",
           "type": "Select",
-          "options":["owner", "editors"],
+          "options": [
+            "owner",
+            "editors"
+          ],
           "info": "Who can add and remove members of this shared folder.  Possible values: owner, editors",
           "required": false
         },
         {
           "name": "sharedLinkPolicy",
           "type": "Select",
-          "options":["team", "anyone", "members"],
+          "options": [
+            "team",
+            "anyone",
+            "members"
+          ],
           "info": "The policy to apply to shared links created for content inside this shared folder. The current user must be on a team to set this policy to SharedLinkPolicy.members. Possible values: anyone, team, members",
           "required": false
         },
@@ -2369,14 +2655,21 @@
         {
           "name": "accessLevel",
           "type": "Select",
-          "options":["viewer", "viewer_no_comment"],
+          "options": [
+            "viewer",
+            "viewer_no_comment"
+          ],
           "info": "The access level on the link for this file. Currently, it only accepts 'viewer' and 'viewer_no_comment'.",
           "required": false
         },
         {
           "name": "linkAudience",
           "type": "Select",
-          "options":["team", "public", "members"],
+          "options": [
+            "team",
+            "public",
+            "members"
+          ],
           "info": "The type of audience on the link for this file. Possible values: public, team, members",
           "required": false
         },
@@ -2389,25 +2682,34 @@
         {
           "name": "linkPassword",
           "type": "Select",
-          "options":["remove_password", "set_password"],
+          "options": [
+            "remove_password",
+            "set_password"
+          ],
           "info": "The password for the link. Possible values: remove_password, set_password",
           "required": false
         },
         {
           "name": "viewerInfoPolicy",
           "type": "Select",
-          "options":["enabled", "disabled"],
+          "options": [
+            "enabled",
+            "disabled"
+          ],
           "info": "Who can enable/disable viewer info for this shared folder.Possible values: enabled, disabled",
           "required": false
         }
       ],
-      "callbacks": [{
-        "name": "error",
-        "info": "Error"
-      }, {
-        "name": "success",
-        "info": "Success"
-      }]
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
     },
     {
       "name": "checkShareJobStatus",
@@ -2426,13 +2728,16 @@
           "required": true
         }
       ],
-      "callbacks": [{
-        "name": "error",
-        "info": "Error"
-      }, {
-        "name": "success",
-        "info": "Success"
-      }]
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
     },
     {
       "name": "unshareFolder",
@@ -2457,13 +2762,16 @@
           "required": false
         }
       ],
-      "callbacks": [{
-        "name": "error",
-        "info": "Error"
-      }, {
-        "name": "success",
-        "info": "Success"
-      }]
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
     },
     {
       "name": "unshareFile",
@@ -2482,13 +2790,16 @@
           "required": true
         }
       ],
-      "callbacks": [{
-        "name": "error",
-        "info": "Error"
-      }, {
-        "name": "success",
-        "info": "Success"
-      }]
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
     },
     {
       "name": "mountFolder",
@@ -2507,13 +2818,16 @@
           "required": true
         }
       ],
-      "callbacks": [{
-        "name": "error",
-        "info": "Error"
-      }, {
-        "name": "success",
-        "info": "Success"
-      }]
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
     },
     {
       "name": "unmountFolder",
@@ -2532,13 +2846,16 @@
           "required": true
         }
       ],
-      "callbacks": [{
-        "name": "error",
-        "info": "Error"
-      }, {
-        "name": "success",
-        "info": "Success"
-      }]
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
     },
     {
       "name": "revokeSharedLink",
@@ -2557,13 +2874,16 @@
           "required": true
         }
       ],
-      "callbacks": [{
-        "name": "error",
-        "info": "Error"
-      }, {
-        "name": "success",
-        "info": "Success"
-      }]
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
     },
     {
       "name": "removeFileMember",
@@ -2588,13 +2908,16 @@
           "required": true
         }
       ],
-      "callbacks": [{
-        "name": "error",
-        "info": "Error"
-      }, {
-        "name": "success",
-        "info": "Success"
-      }]
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
     },
     {
       "name": "removeFolderMember",
@@ -2625,13 +2948,16 @@
           "required": true
         }
       ],
-      "callbacks": [{
-        "name": "error",
-        "info": "Error"
-      }, {
-        "name": "success",
-        "info": "Success"
-      }]
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
     },
     {
       "name": "checkRemoveMemberStatus",
@@ -2650,13 +2976,16 @@
           "required": true
         }
       ],
-      "callbacks": [{
-        "name": "error",
-        "info": "Error"
-      }, {
-        "name": "success",
-        "info": "Success"
-      }]
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
     },
     {
       "name": "transferFolderOwnership",
@@ -2681,13 +3010,16 @@
           "required": true
         }
       ],
-      "callbacks": [{
-        "name": "error",
-        "info": "Error"
-      }, {
-        "name": "success",
-        "info": "Success"
-      }]
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
     },
     {
       "name": "updateFileMemberAccess",
@@ -2714,18 +3046,23 @@
         {
           "name": "accessLevel",
           "type": "Select",
-          "options":["viewer"],
+          "options": [
+            "viewer"
+          ],
           "info": "Defines the access levels for collaborators. Currently only available: viewer",
           "required": true
         }
       ],
-      "callbacks": [{
-        "name": "error",
-        "info": "Error"
-      }, {
-        "name": "success",
-        "info": "Success"
-      }]
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
     },
     {
       "name": "updateFolderMemberAccess",
@@ -2752,18 +3089,24 @@
         {
           "name": "accessLevel",
           "type": "Select",
-          "options":["viewer", "editor"],
+          "options": [
+            "viewer",
+            "editor"
+          ],
           "info": "Defines the access levels for collaborators. Currently only available: viewer, editor",
           "required": true
         }
       ],
-      "callbacks": [{
-        "name": "error",
-        "info": "Error"
-      }, {
-        "name": "success",
-        "info": "Success"
-      }]
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
     },
     {
       "name": "updateFolderPolicy",
@@ -2784,21 +3127,31 @@
         {
           "name": "memberPolicy",
           "type": "Select",
-          "options":["team", "anyone"],
+          "options": [
+            "team",
+            "anyone"
+          ],
           "info": "Who can be a member of this shared folder. Only applicable if the current user is on a team. Possible values: team, anyone",
           "required": false
         },
         {
           "name": "aclUpdatePolicy",
           "type": "Select",
-          "options":["owner", "editors"],
+          "options": [
+            "owner",
+            "editors"
+          ],
           "info": "Who can add and remove members of this shared folder.  Possible values: owner, editors",
           "required": false
         },
         {
           "name": "sharedLinkPolicy",
           "type": "Select",
-          "options":["team", "anyone", "members"],
+          "options": [
+            "team",
+            "anyone",
+            "members"
+          ],
           "info": "The policy to apply to shared links created for content inside this shared folder. The current user must be on a team to set this policy to SharedLinkPolicy.members. Possible values: anyone, team, members",
           "required": false
         },
@@ -2822,14 +3175,21 @@
         {
           "name": "accessLevel",
           "type": "Select",
-          "options":["viewer", "editor"],
+          "options": [
+            "viewer",
+            "editor"
+          ],
           "info": "The access level on the link for this file. Currently, it only accepts 'viewer' and 'viewer_no_comment'.",
           "required": false
         },
         {
           "name": "linkAudience",
           "type": "Select",
-          "options":["team", "public", "members"],
+          "options": [
+            "team",
+            "public",
+            "members"
+          ],
           "info": "The type of audience on the link for this file. Possible values: public, team, members",
           "required": false
         },
@@ -2842,25 +3202,34 @@
         {
           "name": "linkPassword",
           "type": "Select",
-          "options":["remove_password", "set_password"],
+          "options": [
+            "remove_password",
+            "set_password"
+          ],
           "info": "The password for the link. Possible values: remove_password, set_password",
           "required": false
         },
         {
           "name": "viewerInfoPolicy",
           "type": "Select",
-          "options":["enabled", "disabled"],
+          "options": [
+            "enabled",
+            "disabled"
+          ],
           "info": "Who can enable/disable viewer info for this shared folder.Possible values: enabled, disabled",
           "required": false
         }
       ],
-      "callbacks": [{
-        "name": "error",
-        "info": "Error"
-      }, {
-        "name": "success",
-        "info": "Success"
-      }]
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
     }
   ]
 }
