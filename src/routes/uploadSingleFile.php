@@ -32,10 +32,6 @@ $app->post('/api/Dropbox/uploadSingleFile', function ($request, $response, $args
     if (isset($post_data['args']['mute']) && strlen($post_data['args']['mute']) > 0){
         $body['mute'] = $post_data['args']['mute'];
     }
-
-    var_dump($body);
-    exit();
-
     //requesting remote API
     $client = new GuzzleHttp\Client();
 
