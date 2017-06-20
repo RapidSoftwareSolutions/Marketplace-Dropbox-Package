@@ -7,12 +7,6 @@ $app->post('/api/Dropbox/webhookEvent', function ($request, $response, $args) {
         } else {
             $post_data = $validateRes;
         }
-
-        $client = new GuzzleHttp\Client();
-        $resp = $client->request('POST', 'http://d7c2294c.ngrok.io', [
-            'json' => $post_data
-        ]);
-
         $reply = [
             "http_resp" => $post_data['args']['body']['challenge'],
             "client_msg" => $post_data['args']['body'],
