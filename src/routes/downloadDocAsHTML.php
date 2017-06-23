@@ -44,7 +44,7 @@ $app->post('/api/Dropbox/downloadDocAsHTML', function ($request, $response, $arg
                                 ],
                                 [
                                     'name' => 'file',
-                                    'filename' => bin2hex(random_bytes(5)) . $settings['fileExtensions']['wav'],
+                                    'filename' => bin2hex(random_bytes(5)) . '.html',
                                     'contents' => $responseApi
                                 ],
                             ]

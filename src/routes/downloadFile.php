@@ -41,7 +41,7 @@ $app->post('/api/Dropbox/downloadFile', function ($request, $response, $args) {
                                 ],
                                 [
                                     'name' => 'file',
-                                    'filename' => bin2hex(random_bytes(5)) . $settings['fileExtensions']['wav'],
+                                    'filename' => bin2hex(random_bytes(5)) . explode('.', $post_data['args']['filePath'])[count(explode('.', $post_data['args']['filePath']))],
                                     'contents' => $responseApi
                                 ],
                             ]

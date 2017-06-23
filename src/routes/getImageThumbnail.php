@@ -46,7 +46,7 @@ $app->post('/api/Dropbox/getImageThumbnail', function ($request, $response, $arg
                                 ],
                                 [
                                     'name' => 'file',
-                                    'filename' => bin2hex(random_bytes(5)) . $settings['fileExtensions']['wav'],
+                                    'filename' => bin2hex(random_bytes(5)) . $post_data['args']['format'],
                                     'contents' => $responseApi
                                 ],
                             ]
