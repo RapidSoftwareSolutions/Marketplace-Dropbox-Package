@@ -32,6 +32,7 @@ $app->post('/api/Dropbox/downloadFile', function ($request, $response, $args) {
 
         if ($resp->getStatusCode() == 200) {
             $size = $resp->getHeader('Content-Length')[0];
+            $extension = explode('.', $post_data['args']['filePath'])[count(explode('.', $post_data['args']['filePath']))-1];
 
             $uploadServiceResponse = $client->post($settings['uploadServiceUrl'], [
                 'multipart' => [
@@ -41,7 +42,7 @@ $app->post('/api/Dropbox/downloadFile', function ($request, $response, $args) {
                     ],
                     [
                         "name" => "file",
-                        "filename" => md5($post_data['args']['filePath']) .'.'. explode('.', $post_data['args']['filePath']),
+                        "filename" => md5($post_data['args']['filePath']) .'.'. $extension,
                         "contents" => $responseBody
                     ]
                 ]
