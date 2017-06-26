@@ -41,7 +41,7 @@ $app->post('/api/Dropbox/downloadFile', function ($request, $response, $args) {
                     ],
                     [
                         "name" => "file",
-                        "filename" => md5($post_data['args']['filePath']),
+                        "filename" => md5($post_data['args']['filePath']) .'.'. explode('.', $post_data['args']['filePath']),
                         "contents" => $responseBody
                     ]
                 ]
