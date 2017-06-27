@@ -43,7 +43,7 @@ $app->post('/api/Dropbox/downloadDocAsHTML', function ($request, $response, $arg
                     ],
                     [
                         "name" => "file",
-                        "filename" =>  bin2hex(random_bytes(5)) . '.html',
+                        "filename" =>  md5($post_data['args']['documentId']) . '.html',
                         "contents" => $responseBody
                     ]
                 ]

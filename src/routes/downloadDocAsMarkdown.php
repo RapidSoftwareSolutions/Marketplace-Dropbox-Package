@@ -43,7 +43,7 @@ $app->post('/api/Dropbox/downloadDocAsMarkdown', function ($request, $response, 
                                 ],
                                 [
                                     'name' => 'file',
-                                    'filename' => bin2hex(random_bytes(5)) . '.markdown',
+                                    'filename' => md5($post_data['args']['documentId'])  . '.markdown',
                                     'contents' => $responseApi
                                 ],
                             ]
