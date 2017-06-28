@@ -33,7 +33,7 @@
       "steps": [
         "Navigate to https://www.dropbox.com/developers/apps",
         "Create an app or select your app",
-        "To have successful URL verification when you create your dropbox webhook, you need to have your app running already",
+        "To have successful URL verification when you create your dropbox webhook, you need to have your RapidAPI code snippet running already",
         "Scroll down to the 'Webhooks' section and add the following URL: __WEBHOOK_URL__"
       ],
       "args": [
