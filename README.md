@@ -30,7 +30,7 @@ Dropbox
  
   You can use our service as webhookUrl: 
    ```
-   https://webhooks.rapidapi.com/api/message/Mandrill/webhookEvent/{projectName}/{projectKey} * see credentials description above
+   https://webhooks.rapidapi.com/api/message/Dropbox/webhookEvent/{projectName}/{projectKey} * see credentials description above
    ```
  
  ## Webhook credentials
