@@ -16,7 +16,7 @@
   "events": [
     {
       "name": "webhookEvent",
-      "description": "This method is called every time when webhook event happens",
+      "description": "This method is called every time a Dropbox webhook event occurs",
       "payload": {
         "list_folder": {
           "accounts": [
@@ -31,8 +31,10 @@
         }
       },
       "steps": [
-        "Go to add addWebhook block",
-        "Set webhookUrl to __WEBHOOK_URL__"
+        "Navigate to https://www.dropbox.com/developers/apps",
+        "Create an app or select your app",
+        "To have successful URL verification when you create your dropbox webhook, you need to have your RapidAPI code snippet running already",
+        "Scroll down to the 'Webhooks' section and add the following URL: __WEBHOOK_URL__"
       ],
       "args": [
         {
