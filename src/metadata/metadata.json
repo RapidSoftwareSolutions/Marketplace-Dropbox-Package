@@ -46,6 +46,12 @@
       ]
     }
   ],
+  "steps": [
+    "Go to Dropbox website (http://dropbox.com/)",
+    "Log in or create a new account",
+    "Register an app (https://www.dropbox.com/developers)",
+    "After creation your app you will see api Secret and api Key"
+  ],
   "blocks": [
     {
       "name": "getAccessToken",
