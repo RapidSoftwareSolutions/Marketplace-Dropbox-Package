@@ -19,7 +19,7 @@ $app->post('/api/Dropbox/copy', function ($request, $response, $args) {
         $body['allow_shared_folder'] = $post_data['args']['allowSharedFolder'];
     }
     if (isset($post_data['args']['autoRename']) && strlen($post_data['args']['autoRename']) > 0){
-        $body['autorename'] = $post_data['args']['autoRename'];
+        $body['autorename'] = $post_data['args']['autoRename'] == "true" ? true : false;
     }
 
     //requesting remote API

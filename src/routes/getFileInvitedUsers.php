@@ -23,10 +23,11 @@ $app->post('/api/Dropbox/getFileInvitedUsers', function ($request, $response, $a
         $body['actions'] = $post_data['args']['actions'];
     }
     if (isset($post_data['args']['limit']) && strlen($post_data['args']['limit']) > 0) {
-        $body['limit'] = $post_data['args']['limit'];
+        $body['limit'] =(int) $post_data['args']['limit'];
     }
     if (isset($post_data['args']['includeInherited']) && strlen($post_data['args']['includeInherited']) > 0) {
-        $body['include_inherited'] = $post_data['args']['includeInherited'];
+        $body['include_inherited'] = $post_data['args']['includeInherited'] == "true" ? true : false;
+
     }
 
     try {

@@ -33,7 +33,7 @@ $app->post('/api/Dropbox/getDocs', function ($request, $response, $args) {
     }
 
     if (isset($post_data['args']['limit']) && strlen($post_data['args']['limit']) > 0){
-        $body['limit'] = $post_data['args']['limit'];
+        $body['limit'] =(int) $post_data['args']['limit'];
     }
 
     //requesting remote API

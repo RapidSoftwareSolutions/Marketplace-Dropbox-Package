@@ -23,14 +23,14 @@ $app->post('/api/Dropbox/uploadSingleFile', function ($request, $response, $args
         $body['mode'] = $post_data['args']['uploadMode'];
     }
     if (isset($post_data['args']['autoRename']) && strlen($post_data['args']['autoRename']) > 0){
-        $body['autorename'] = $post_data['args']['autoRename'];
+        $body['autorename'] = $post_data['args']['autoRename'] == "true" ? true : false;
     }
     if (isset($post_data['args']['clientModified']) && strlen($post_data['args']['clientModified']) > 0){
         $dateTime = new DateTime($post_data['args']['clientModified']);
         $body['client_modified'] = $dateTime->format('Y-m-d\TH:i:s\Z');
     }
     if (isset($post_data['args']['mute']) && strlen($post_data['args']['mute']) > 0){
-        $body['mute'] = $post_data['args']['mute'];
+        $body['mute'] = $post_data['args']['mute'] == "true" ? true : false;
     }
     //requesting remote API
     $client = new GuzzleHttp\Client();

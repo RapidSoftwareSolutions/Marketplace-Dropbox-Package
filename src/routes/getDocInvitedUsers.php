@@ -15,7 +15,7 @@ $app->post('/api/Dropbox/getDocInvitedUsers', function ($request, $response, $ar
     $body = array();
     $body['doc_id'] = $post_data['args']['documentId'];
     if (isset($post_data['args']['limit']) && strlen($post_data['args']['limit']) > 0){
-        $body['limit'] = $post_data['args']['limit'];
+        $body['limit'] =(int) $post_data['args']['limit'];
     }
 
     //requesting remote API

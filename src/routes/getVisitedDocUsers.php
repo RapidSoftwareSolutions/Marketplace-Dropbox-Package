@@ -19,7 +19,7 @@ $app->post('/api/Dropbox/getVisitedDocUsers', function ($request, $response, $ar
     $body['doc_id'] = $post_data['args']['documentId'];
 
     if (isset($post_data['args']['limit']) && strlen($post_data['args']['limit']) > 0) {
-        $body['limit'] = $post_data['args']['limit'];
+        $body['limit'] =(int) $post_data['args']['limit'];
     }
     if (isset($post_data['args']['filterBy']) && strlen($post_data['args']['filterBy']) > 0) {
         $body['filter_by'] = $post_data['args']['filterBy'];

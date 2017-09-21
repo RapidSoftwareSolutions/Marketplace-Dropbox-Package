@@ -19,7 +19,8 @@ $app->post('/api/Dropbox/relinquishFolderMembership', function ($request, $respo
 
     $body['shared_folder_id'] = $post_data['args']['folderId'];
     if (isset($post_data['args']['leaveCopy']) && strlen($post_data['args']['leaveCopy']) > 0){
-        $body['leave_a_copy'] = $post_data['args']['leaveCopy'];
+        $body['leave_a_copy'] = $post_data['args']['leaveCopy'] == "true" ? true : false;
+
     }
 
     try {

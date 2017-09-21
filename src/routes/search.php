@@ -21,11 +21,11 @@ $app->post('/api/Dropbox/search', function ($request, $response, $args) {
     }
 
     if (isset($post_data['args']['maxResults']) && strlen($post_data['args']['maxResults']) > 0){
-        $body['max_results'] = $post_data['args']['maxResults'];
+        $body['max_results'] = (int) $post_data['args']['maxResults'];
     }
 
     if (isset($post_data['args']['searchMode']) && strlen($post_data['args']['searchMode']) > 0){
-        $body['mode'] = $post_data['args']['searchMode'];
+        $body['mode'] = (int) $post_data['args']['searchMode'];
     }
 
     //requesting remote API

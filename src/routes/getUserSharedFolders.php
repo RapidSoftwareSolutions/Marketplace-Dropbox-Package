@@ -17,9 +17,9 @@ $app->post('/api/Dropbox/getUserSharedFolders', function ($request, $response, $
     //requesting remote API
     $client = new GuzzleHttp\Client();
     if (isset($post_data['args']['limit']) && strlen($post_data['args']['limit']) > 0) {
-        $body['limit'] = $post_data['args']['limit'];
+        $body['limit'] =(int) $post_data['args']['limit'];
     }
-    if (isset($post_data['args']['actionsList']) && strlen($post_data['args']['actionsList']) > 0) {
+    if (isset($post_data['args']['actionsList']) && count($post_data['args']['actionsList']) > 0) {
         $body['actions'] = $post_data['args']['actionsList'];
     } else {
         $body['actions'] = array();

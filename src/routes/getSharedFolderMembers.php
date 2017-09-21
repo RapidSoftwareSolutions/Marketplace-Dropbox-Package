@@ -23,7 +23,7 @@ $app->post('/api/Dropbox/getSharedFolderMembers', function ($request, $response,
         $body['actions'] = $post_data['args']['actions'];
     }
     if (isset($post_data['args']['limit']) && strlen($post_data['args']['limit']) > 0) {
-        $body['limit'] = $post_data['args']['limit'];
+        $body['limit'] =(int) $post_data['args']['limit'];
     }
 
     try {

@@ -22,7 +22,7 @@ $app->post('/api/Dropbox/addUsersToDoc', function ($request, $response, $args) {
         $body['custom_message'] = $post_data['args']['customMessage'];
     }
     if (isset($post_data['args']['quiet']) && strlen($post_data['args']['quiet']) > 0) {
-        $body['quiet'] = $post_data['args']['quiet'];
+        $body['quiet'] = $post_data['args']['quiet'] == "true" ? true : false;
     }
 
     try {

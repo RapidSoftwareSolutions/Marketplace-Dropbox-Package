@@ -22,13 +22,14 @@ $app->post('/api/Dropbox/addFileMembers', function ($request, $response, $args) 
         $body['custom_message'] = $post_data['args']['customMessage'];
     }
     if (isset($post_data['args']['quiet']) && strlen($post_data['args']['quiet']) > 0) {
-        $body['quiet'] = $post_data['args']['quiet'];
+        $body['quiet'] = $post_data['args']['quiet'] == "true" ? true : false;
     }
     if (isset($post_data['args']['accessLevel']) && strlen($post_data['args']['accessLevel']) > 0) {
         $body['access_level'] = $post_data['args']['accessLevel'];
     }
     if (isset($post_data['args']['addMessageAsComment']) && strlen($post_data['args']['addMessageAsComment']) > 0) {
-        $body['add_message_as_comment'] = $post_data['args']['addMessageAsComment'];
+        $body['add_message_as_comment'] = $post_data['args']['addMessageAsComment'] == "true" ? true : false;
+
     }
 
     try {

@@ -19,7 +19,7 @@ $app->post('/api/Dropbox/removeFolderMember', function ($request, $response, $ar
 
     $body['shared_folder_id'] = $post_data['args']['folderId'];
     $body['member'] = $post_data['args']['member'];
-    $body['leave_a_copy'] = $post_data['args']['leaveCopy'];
+    $body['leave_a_copy'] = $post_data['args']['leaveCopy'] == "true" ? true : false;
 
     try {
 

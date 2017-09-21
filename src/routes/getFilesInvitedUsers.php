@@ -20,7 +20,7 @@ $app->post('/api/Dropbox/getFilesInvitedUsers', function ($request, $response, $
     $body['files'] = $post_data['args']['fileIds'];
 
     if (isset($post_data['args']['limit']) && strlen($post_data['args']['limit']) > 0) {
-        $body['limit'] = $post_data['args']['limit'];
+        $body['limit'] =(int) $post_data['args']['limit'];
     }
 
     try {
