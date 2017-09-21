@@ -23,6 +23,8 @@ $app->post('/api/Dropbox/getVisitedDocUsers', function ($request, $response, $ar
     }
     if (isset($post_data['args']['filterBy']) && strlen($post_data['args']['filterBy']) > 0) {
         $body['filter_by'] = $post_data['args']['filterBy'];
+    } else {
+        $body['filter_by'] = 'shared';
     }
 
     try {

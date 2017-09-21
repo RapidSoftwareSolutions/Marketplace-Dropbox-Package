@@ -17,7 +17,7 @@ $app->post('/api/Dropbox/search', function ($request, $response, $args) {
     $body['query'] = $post_data['args']['searchQuery'];
 
     if (isset($post_data['args']['startFrom']) && strlen($post_data['args']['startFrom']) > 0){
-        $body['start'] = $post_data['args']['startFrom'];
+        $body['start'] =(int) $post_data['args']['startFrom'];
     }
 
     if (isset($post_data['args']['maxResults']) && strlen($post_data['args']['maxResults']) > 0){

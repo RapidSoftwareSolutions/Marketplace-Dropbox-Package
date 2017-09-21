@@ -17,7 +17,7 @@ $app->post('/api/Dropbox/move', function ($request, $response, $args) {
     $body['to_path'] = $post_data['args']['toPath'];
 
     if (isset($post_data['args']['autoRename']) && strlen($post_data['args']['autoRename']) > 0){
-        $body['autorename'] = $post_data['args']['autoRename'];
+        $body['autorename'] = $post_data['args']['autoRename'] == "true" ? true : false;
     }
 
     //requesting remote API

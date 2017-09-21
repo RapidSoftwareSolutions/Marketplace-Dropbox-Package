@@ -16,7 +16,7 @@ $app->post('/api/Dropbox/copy', function ($request, $response, $args) {
     $body['from_path'] = $post_data['args']['fromPath'];
     $body['to_path'] = $post_data['args']['toPath'];
     if (isset($post_data['args']['allowSharedFolder']) && strlen($post_data['args']['allowSharedFolder']) > 0){
-        $body['allow_shared_folder'] = $post_data['args']['allowSharedFolder'];
+        $body['allow_shared_folder'] = $post_data['args']['allowSharedFolder'] == "true" ? true : false;
     }
     if (isset($post_data['args']['autoRename']) && strlen($post_data['args']['autoRename']) > 0){
         $body['autorename'] = $post_data['args']['autoRename'] == "true" ? true : false;

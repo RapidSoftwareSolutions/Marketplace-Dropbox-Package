@@ -15,10 +15,10 @@ $app->post('/api/Dropbox/copyBatch', function ($request, $response, $args) {
     $body = array();
     $body['entries'] = $post_data['args']['entries'];
     if (isset($post_data['args']['allowSharedFolder']) && strlen($post_data['args']['allowSharedFolder']) > 0){
-        $body['allow_shared_folder'] = $post_data['args']['allowSharedFolder'];
+        $body['allow_shared_folder'] = $post_data['args']['allowSharedFolder'] == "true" ? true : false;
     }
     if (isset($post_data['args']['autoRename']) && strlen($post_data['args']['autoRename']) > 0){
-        $body['autorename'] = $post_data['args']['autoRename'];
+        $body['autorename'] = $post_data['args']['autoRename'] == "true" ? true : false;
     }
 
     //requesting remote API
