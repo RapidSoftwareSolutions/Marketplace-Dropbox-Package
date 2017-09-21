@@ -19,13 +19,13 @@ $app->post('/api/Dropbox/getMetadata', function ($request, $response, $args) {
     $body['path'] = $post_data['args']['path'];
 
     if (isset($post_data['args']['includeMediaInfo']) && strlen($post_data['args']['includeMediaInfo']) > 0){
-        $body['include_media_info'] = $post_data['args']['includeMediaInfo'];
+        $body['include_media_info'] = $post_data['args']['includeMediaInfo'] == "true" ? true : false;
     }
     if (isset($post_data['args']['includeDeleted']) && strlen($post_data['args']['includeDeleted']) > 0){
-        $body['include_deleted'] = $post_data['args']['includeDeleted'];
+        $body['include_deleted'] = $post_data['args']['includeDeleted'] == "true" ? true : false;
     }
     if (isset($post_data['args']['includeHasExplicitSharedMembers']) && strlen($post_data['args']['includeHasExplicitSharedMembers']) > 0){
-        $body['include_has_explicit_shared_members'] = $post_data['args']['includeHasExplicitSharedMembers'];
+        $body['include_has_explicit_shared_members'] = $post_data['args']['includeHasExplicitSharedMembers'] == "true" ? true : false;
     }
 
     try {
